@@ -10,7 +10,7 @@ QuickEst aims to estimate the development effort of software projects, guarantee
   # 2. Installation
   The installation of the application on Windows, Linux, and macOS operating systems is performed from the terminal by following these steps:
 1. Python Installation:
-     Ensure you have Python version 3.10.14 or a lower version installed. You can download Python from https://www.python.org/.
+     Ensure you have Python version 3.10.14 installed. You can download Python from https://www.python.org/.
 2. Virtual Environment Setup:
      Create and activate a virtual environment to isolate the application dependencies. Execute the following commands:
      - python -m venv venv
