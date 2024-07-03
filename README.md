@@ -13,20 +13,20 @@ QuickEst aims to estimate the development effort of software projects, guarantee
      Ensure you have Python version 3.10.14 installed. You can download Python from https://www.python.org/.
 2. Virtual Environment Setup:
      Create and activate a virtual environment to isolate the application dependencies. Execute the following commands:
-     - python -m venv venv
+     `python -m venv venv`
      - Activate the virtual environment:
+       
+       On Linux and macOS: `source venv/bin/activate`
 
-       On Linux and macOS: source venv/bin/activate
-
-       On Windows: .\venv\Scripts\activate
-3. Dependency Installation:
+       On Windows: `.\venv\Scripts\activate`
+4. Dependency Installation:
 
    Install the necessary dependencies, available in the requirements.txt file, to set up the application environment, using the following command:
-   pip install -r requirements.txt
+   `pip install -r requirements.txt`
 
 5. Application Execution:
 
-   Start the application using the command: python main.py
+   Start the application using the command: `python main.py`
    
 For macOS users, in addition to following the above steps, a specific executable has been generated to facilitate installation (only valid for macOS with arm64 architecture). Download the application executable and follow these steps:
 
