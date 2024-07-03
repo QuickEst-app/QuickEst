@@ -5,8 +5,8 @@ QuickEst aims to estimate the development effort of software projects, guarantee
  This section will detail the requirements and steps necessary to run the QuickEst application.
   # 1. Prerequisites
   To ensure the correct functioning of the application, certain prerequisites must be met:
-  - The Python version must be 3.10.14 or lower. You can run the program with higher versions, but it has not been tested, and bugs may appear.
-  - A minimum screen resolution of 2560x1600 is recommended to ensure a smooth and hassle-free user experience.
+  - Use Python version 3.10.14 to ensure that the program works as expected and avoid possible compatibility problems and unexpected bugs. It can run with other versions, but has not been tested.
+  - Have a screen resolution of at least 2560x1600 to ensure a smooth and seamless user experience.
   # 2. Installation
   The installation of the application on Windows, Linux, and macOS operating systems is performed from the terminal by following these steps:
 1. Python Installation:
