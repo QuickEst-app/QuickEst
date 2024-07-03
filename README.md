@@ -21,7 +21,7 @@ QuickEst aims to estimate the development effort of software projects, guarantee
        On Windows: .\venv\Scripts\activate
 3. Dependency Installation:
 
-   Install the necessary dependencies to set up the application environment, available in the requirements.txt file, using the following command:
+   Install the necessary dependencies, available in the requirements.txt file, to set up the application environment, using the following command:
    pip install -r requirements.txt
 
 5. Application Execution:
