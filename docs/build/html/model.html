@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Model Module &#8212; QuickEst 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="UI Module" href="ui.html" />
+    <link rel="prev" title="Main Module" href="main.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="model-module">
+<h1>Model Module<a class="headerlink" href="#model-module" title="Link to this heading">¶</a></h1>
+<p>The Model module is responsible for managing the data logic of the application. It acts as an intermediate layer between the database and the controllers, providing methods to access, manipulate and store the necessary data. Each file within this module contains a class that represents a specific entity and its interaction with the database, implementing functions to perform CRUD (Create, Read, Update, Delete) and other related operations.</p>
+<section id="module-Model.actors_model">
+<span id="actorsmodel-class"></span><h2>ActorsModel Class<a class="headerlink" href="#module-Model.actors_model" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Model.actors_model.</span></span><span class="sig-name descname"><span class="pre">ActorsModel</span></span><a class="headerlink" href="#Model.actors_model.ActorsModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Model for managing actor data in the application.</p>
+<p>This class is responsible for all database operations related to actors, including adding, updating, deleting, and retrieving actor data. It also calculates and maintains actor weights and counts for the project.</p>
+<section id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the ActorsModel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.create_actor">
+<span class="sig-name descname"><span class="pre">create_actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.create_actor" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new actor in the database.</p>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>actor_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing the actor data:</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to which the actor belongs.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>Status code indicating the result of the operation, and the new actor ID if successful.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.delete_actors">
+<span class="sig-name descname"><span class="pre">delete_actors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actors_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.delete_actors" title="Link to this definition">¶</a></dt>
+<dd><p>Delete actors from the database.</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>actors_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing details of the actors to be deleted.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h4>Returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>Status code indicating the result of the operation, and a list of missing IDs if any.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.export_actors_data">
+<span class="sig-name descname"><span class="pre">export_actors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.export_actors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Export actors data for the given project.</p>
+<section id="id3">
+<h4>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to export actors data for.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h4>Returns<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list or int</dt><dd><p>List of actors data or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.get_actors_data">
+<span class="sig-name descname"><span class="pre">get_actors_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.get_actors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the actors data.</p>
+<section id="id5">
+<h4>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list</dt><dd><p>A list containing the actors data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.get_data" title="Link to this definition">¶</a></dt>
+<dd><p>Get actors data and summary for the given project.</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to get data for.</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h4>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict or int</dt><dd><p>Dictionary containing actors data and actors summary or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.get_summary_data">
+<span class="sig-name descname"><span class="pre">get_summary_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.get_summary_data" title="Link to this definition">¶</a></dt>
+<dd><p>Get summary data for the actors.</p>
+<section id="id8">
+<h4>Returns<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple containing the actors count, total actors, actors UAW, total UAW, and actors weights.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.load_actors_data">
+<span class="sig-name descname"><span class="pre">load_actors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.load_actors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load actors data for the given project.</p>
+<section id="id9">
+<h4>Parameters<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to load actors for.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h4>Returns<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.load_actors_weights">
+<span class="sig-name descname"><span class="pre">load_actors_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.load_actors_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Load the weights of the actors for the given project.</p>
+<section id="id11">
+<h4>Parameters<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to load weights for.</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h4>Returns<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.update_actor">
+<span class="sig-name descname"><span class="pre">update_actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.update_actor" title="Link to this definition">¶</a></dt>
+<dd><p>Update an existing actor in the database.</p>
+<section id="id13">
+<h4>Parameters<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>olda_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing the current actor data.</p>
+</dd>
+<dt>new_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing the new actor data including.</p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h4>Returns<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.update_actors_weights">
+<span class="sig-name descname"><span class="pre">update_actors_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.update_actors_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Update the weights of the actors.</p>
+<section id="id15">
+<h4>Parameters<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>weights<span class="classifier">dict</span></dt><dd><p>Dictionary containing the actors weights.</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to which the actors belong.</p>
+</dd>
+</dl>
+</section>
+<section id="id16">
+<h4>Returns<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.actors_model.ActorsModel.update_counts_and_UAW">
+<span class="sig-name descname"><span class="pre">update_counts_and_UAW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">complexity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">increment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.actors_model.ActorsModel.update_counts_and_UAW" title="Link to this definition">¶</a></dt>
+<dd><p>Update the actor counts and unadjusted actor weights (UAW).</p>
+<section id="id17">
+<h4>Parameters<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>complexity<span class="classifier">str</span></dt><dd><p>The complexity of the actor.</p>
+</dd>
+<dt>increment<span class="classifier">bool, optional</span></dt><dd><p>Value to increment or decrement the count, by default True.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Model.dashboard_model">
+<span id="dashboardmodel-class"></span><h2>DashboardModel Class<a class="headerlink" href="#module-Model.dashboard_model" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Model.dashboard_model.</span></span><span class="sig-name descname"><span class="pre">DashboardModel</span></span><a class="headerlink" href="#Model.dashboard_model.DashboardModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Model for managing the dashboard data in the application.</p>
+<p>This class is responsible for all calculations and data operations related to the project dashboard. It’s is responsible for calculating and obtaining key metrics related to project effort estimation.</p>
+<section id="id18">
+<h3>Methods<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the DashboardModel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.calculate_E">
+<span class="sig-name descname"><span class="pre">calculate_E</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.calculate_E" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Estimated Effort (E).</p>
+<section id="id19">
+<h4>Returns<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>float</dt><dd><p>The calculated Estimated Effort.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.calculate_ECF">
+<span class="sig-name descname"><span class="pre">calculate_ECF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.calculate_ECF" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Environmental Complexity Factor (ECF).</p>
+<section id="id20">
+<h4>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>EFactor<span class="classifier">float</span></dt><dd><p>Environmental Factor.</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h4>Returns<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>float</dt><dd><p>The calculated ECF.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.calculate_TCF">
+<span class="sig-name descname"><span class="pre">calculate_TCF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.calculate_TCF" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Technical Complexity Factor (TCF).</p>
+<section id="id22">
+<h4>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>TFactor<span class="classifier">float</span></dt><dd><p>Technical Factor.</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h4>Returns<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>float</dt><dd><p>The calculated TCF.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.calculate_UCP">
+<span class="sig-name descname"><span class="pre">calculate_UCP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.calculate_UCP" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Adjusted Use Case Points (UCP).</p>
+<section id="id24">
+<h4>Returns<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>float</dt><dd><p>The calculated UCP.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.calculate_UUCP">
+<span class="sig-name descname"><span class="pre">calculate_UUCP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">UAW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UUCW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.calculate_UUCP" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Unadjusted Use Case Points (UUCP).</p>
+<section id="id25">
+<h4>Parameters<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>UAW<span class="classifier">float</span></dt><dd><p>Unadjusted Actor Weight.</p>
+</dd>
+<dt>UUCW<span class="classifier">float</span></dt><dd><p>Unadjusted Use Case Weight.</p>
+</dd>
+</dl>
+</section>
+<section id="id26">
+<h4>Returns<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>float</dt><dd><p>The calculated UUCP.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.calculate_effort">
+<span class="sig-name descname"><span class="pre">calculate_effort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.calculate_effort" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the effort distribution based on the percentages and estimated effort.</p>
+<section id="id27">
+<h4>Returns<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>Dictionary of person-hours per activity and total_hours</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.get_dashboard_data">
+<span class="sig-name descname"><span class="pre">get_dashboard_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.get_dashboard_data" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the dashboard data.</p>
+<section id="id28">
+<h4>Returns<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list</dt><dd><p>A list containing the dashboard data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.get_effort_distribution_data">
+<span class="sig-name descname"><span class="pre">get_effort_distribution_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.get_effort_distribution_data" title="Link to this definition">¶</a></dt>
+<dd><p>Get the effort distribution data for the project.</p>
+<section id="id29">
+<h4>Parameters<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id30">
+<h4>Returns<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>DataFrame containing effort distribution data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.get_metrics_data">
+<span class="sig-name descname"><span class="pre">get_metrics_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.get_metrics_data" title="Link to this definition">¶</a></dt>
+<dd><p>Get the metrics data for the project.</p>
+<section id="id31">
+<h4>Parameters<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id32">
+<h4>Returns<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict</dt><dd><p>Dictionary containing metrics data and total effort.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.load_dashboard_data">
+<span class="sig-name descname"><span class="pre">load_dashboard_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.load_dashboard_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load the dashboard data for the given project.</p>
+<section id="id33">
+<h4>Parameters<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to load data for.</p>
+</dd>
+</dl>
+</section>
+<section id="id34">
+<h4>Returns<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.update_cf">
+<span class="sig-name descname"><span class="pre">update_cf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.update_cf" title="Link to this definition">¶</a></dt>
+<dd><p>Update the conversion factor (CF) for the project.</p>
+<section id="id35">
+<h4>Parameters<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>cf<span class="classifier">float</span></dt><dd><p>The new conversion factor.</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to update.</p>
+</dd>
+</dl>
+</section>
+<section id="id36">
+<h4>Returns<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.dashboard_model.DashboardModel.update_percentages">
+<span class="sig-name descname"><span class="pre">update_percentages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.dashboard_model.DashboardModel.update_percentages" title="Link to this definition">¶</a></dt>
+<dd><p>Update the percentages for different phases of the project.</p>
+<section id="id37">
+<h4>Parameters<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>percentages<span class="classifier">dict</span></dt><dd><p>Dictionary containing the effort distribution percentages.</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to update.</p>
+</dd>
+</dl>
+</section>
+<section id="id38">
+<h4>Returns<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Model.environmentalFactors_model">
+<span id="environmentalfactorsmodel-class"></span><h2>EnvironmentalFactorsModel Class<a class="headerlink" href="#module-Model.environmentalFactors_model" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Model.environmentalFactors_model.</span></span><span class="sig-name descname"><span class="pre">EnvironmentalFactorsModel</span></span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Model for managing environmental factor data in the application.</p>
+<p>This class handles all database operations related to environmental factors, including updating and retrieving environmental factor data. It calculates and maintains the influence and results of some operations of this factors.</p>
+<section id="id39">
+<h3>Methods<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the EnvironmentalFactorsModel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.categorize_influence">
+<span class="sig-name descname"><span class="pre">categorize_influence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">influence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.categorize_influence" title="Link to this definition">¶</a></dt>
+<dd><p>Categorize the influence value into ‘irrelevant’, ‘medium’, or ‘essential’.</p>
+<section id="id40">
+<h4>Parameters<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>influence<span class="classifier">int</span></dt><dd><p>The influence value to categorize.</p>
+</dd>
+</dl>
+</section>
+<section id="id41">
+<h4>Returns<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>str</dt><dd><p>The category of the influence value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.export_environmental_factors_data">
+<span class="sig-name descname"><span class="pre">export_environmental_factors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.export_environmental_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Export environmental factors data for the given project.</p>
+<section id="id42">
+<h4>Parameters<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id43">
+<h4>Returns<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list or int</dt><dd><p>List of environmental factors data or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.get_EF_results">
+<span class="sig-name descname"><span class="pre">get_EF_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.get_EF_results" title="Link to this definition">¶</a></dt>
+<dd><p>Get the results of environmental factors.</p>
+<section id="id44">
+<h4>Returns<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A dictionary of factor results, the total environmental factor and the count of factors by category.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.get_data" title="Link to this definition">¶</a></dt>
+<dd><p>Get environmental factors data and summary for the given project.</p>
+<section id="id45">
+<h4>Parameters<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id46">
+<h4>Returns<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict or int</dt><dd><p>Dictionary containing environmental factors data and summary, or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.get_environmental_factors_data">
+<span class="sig-name descname"><span class="pre">get_environmental_factors_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.get_environmental_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the environmental factors data.</p>
+<section id="id47">
+<h4>Returns<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list</dt><dd><p>A list containing the environmental factors data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.insert_environmental_factors_default">
+<span class="sig-name descname"><span class="pre">insert_environmental_factors_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.insert_environmental_factors_default" title="Link to this definition">¶</a></dt>
+<dd><p>Insert default environmental factors for a new project.</p>
+<section id="id48">
+<h4>Parameters<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id49">
+<h4>Returns<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.load_environmental_factors_data">
+<span class="sig-name descname"><span class="pre">load_environmental_factors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.load_environmental_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load environmental factors data for the given project.</p>
+<section id="id50">
+<h4>Parameters<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id51">
+<h4>Returns<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.environmentalFactors_model.EnvironmentalFactorsModel.update_environmental_factor">
+<span class="sig-name descname"><span class="pre">update_environmental_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.environmentalFactors_model.EnvironmentalFactorsModel.update_environmental_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Update an environmental factor in the database.</p>
+<section id="id52">
+<h4>Parameters<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>factor_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing environmental factor data.</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id53">
+<h4>Returns<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Model.projects_model">
+<span id="projectsmodel-class"></span><h2>ProjectsModel Class<a class="headerlink" href="#module-Model.projects_model" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Model.projects_model.</span></span><span class="sig-name descname"><span class="pre">ProjectsModel</span></span><a class="headerlink" href="#Model.projects_model.ProjectsModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Model for managing project data in the application.</p>
+<p>This class handles all database operations related to projects, including creation, deletion, updating, export, import and retrieval project data. It also manages database transactions to ensure data integrity.</p>
+<section id="id54">
+<h3>Methods<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the ProjectsModel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.add_project">
+<span class="sig-name descname"><span class="pre">add_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.add_project" title="Link to this definition">¶</a></dt>
+<dd><p>Add a new project to the database.</p>
+<section id="id55">
+<h4>Parameters<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing project data.</p>
+</dd>
+</dl>
+</section>
+<section id="id56">
+<h4>Returns<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>Status code indicating the result of the operation, and the new project ID if successful, None otherwise.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.calculate_file_hash">
+<span class="sig-name descname"><span class="pre">calculate_file_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.calculate_file_hash" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the SHA-256 hash of a file.</p>
+<section id="id57">
+<h4>Parameters<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>file_path<span class="classifier">str</span></dt><dd><p>The path to the file.</p>
+</dd>
+</dl>
+</section>
+<section id="id58">
+<h4>Returns<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>str or None</dt><dd><p>The SHA-256 hash of the file, None otherwise.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.commit" title="Link to this definition">¶</a></dt>
+<dd><p>Commit the current database transaction.</p>
+<section id="id59">
+<h4>Returns<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the transaction was committed successfully, False otherwise.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.delete_project">
+<span class="sig-name descname"><span class="pre">delete_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.delete_project" title="Link to this definition">¶</a></dt>
+<dd><p>Delete a project from the database.</p>
+<section id="id60">
+<h4>Parameters<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to delete.</p>
+</dd>
+</dl>
+</section>
+<section id="id61">
+<h4>Returns<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.determine_file_type">
+<span class="sig-name descname"><span class="pre">determine_file_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.determine_file_type" title="Link to this definition">¶</a></dt>
+<dd><p>Determine the type of file based on its name.</p>
+<section id="id62">
+<h4>Parameters<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>file_path<span class="classifier">str</span></dt><dd><p>The path to the file.</p>
+</dd>
+</dl>
+</section>
+<section id="id63">
+<h4>Returns<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>str or None</dt><dd><p>The file type if recognized, None otherwise.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.export_parameters_data">
+<span class="sig-name descname"><span class="pre">export_parameters_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.export_parameters_data" title="Link to this definition">¶</a></dt>
+<dd><p>Export parameters data for a project.</p>
+<section id="id64">
+<h4>Parameters<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id65">
+<h4>Returns<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list or int</dt><dd><p>List of parameters data or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.export_project_data">
+<span class="sig-name descname"><span class="pre">export_project_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.export_project_data" title="Link to this definition">¶</a></dt>
+<dd><p>Export data for a specific project.</p>
+<section id="id66">
+<h4>Parameters<a class="headerlink" href="#id66" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id67">
+<h4>Returns<a class="headerlink" href="#id67" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list or int</dt><dd><p>List of project data or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.find_manifest">
+<span class="sig-name descname"><span class="pre">find_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.find_manifest" title="Link to this definition">¶</a></dt>
+<dd><p>Find the project manifest file in the specified directory.</p>
+<section id="id68">
+<h4>Parameters<a class="headerlink" href="#id68" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>directory<span class="classifier">str</span></dt><dd><p>The directory to search for the manifest file.</p>
+</dd>
+</dl>
+</section>
+<section id="id69">
+<h4>Returns<a class="headerlink" href="#id69" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>str or int</dt><dd><p>The path to the manifest file if found, or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.get_project_data">
+<span class="sig-name descname"><span class="pre">get_project_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.get_project_data" title="Link to this definition">¶</a></dt>
+<dd><p>Get data for a specific project.</p>
+<section id="id70">
+<h4>Parameters<a class="headerlink" href="#id70" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id71">
+<h4>Returns<a class="headerlink" href="#id71" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict or int</dt><dd><p>Dictionary containing project data and report date if successful, or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.get_projects">
+<span class="sig-name descname"><span class="pre">get_projects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.get_projects" title="Link to this definition">¶</a></dt>
+<dd><p>Get all projects from the database.</p>
+<section id="id72">
+<h4>Returns<a class="headerlink" href="#id72" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>Status code and a list of projects.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.insert_parameters">
+<span class="sig-name descname"><span class="pre">insert_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.insert_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Insert default parameters for a new project.</p>
+<section id="id73">
+<h4>Parameters<a class="headerlink" href="#id73" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id74">
+<h4>Returns<a class="headerlink" href="#id74" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.load_json">
+<span class="sig-name descname"><span class="pre">load_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.load_json" title="Link to this definition">¶</a></dt>
+<dd><p>Load a JSON manifest file.</p>
+<section id="id75">
+<h4>Parameters<a class="headerlink" href="#id75" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>manifest_file<span class="classifier">str</span></dt><dd><p>The path to the manifest file.</p>
+</dd>
+</dl>
+</section>
+<section id="id76">
+<h4>Returns<a class="headerlink" href="#id76" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict or int</dt><dd><p>The loaded JSON object as a dictionary if successful, or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.load_project_data">
+<span class="sig-name descname"><span class="pre">load_project_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_manifest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.load_project_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load project data based on the manifest.</p>
+<section id="id77">
+<h4>Parameters<a class="headerlink" href="#id77" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_manifest<span class="classifier">dict</span></dt><dd><p>The project manifest dictionary.</p>
+</dd>
+<dt>directory<span class="classifier">str</span></dt><dd><p>The directory containing the project files.</p>
+</dd>
+</dl>
+</section>
+<section id="id78">
+<h4>Returns<a class="headerlink" href="#id78" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict or int</dt><dd><p>Dictionary containing the loaded project data if successful, or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.read_actor">
+<span class="sig-name descname"><span class="pre">read_actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.read_actor" title="Link to this definition">¶</a></dt>
+<dd><p>Read actor data from a stream.</p>
+<section id="id79">
+<h4>Parameters<a class="headerlink" href="#id79" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>stream<span class="classifier">QDataStream</span></dt><dd><p>The data stream.</p>
+</dd>
+</dl>
+</section>
+<section id="id80">
+<h4>Returns<a class="headerlink" href="#id80" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict</dt><dd><p>The actor data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.read_data_from_binary_file">
+<span class="sig-name descname"><span class="pre">read_data_from_binary_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.read_data_from_binary_file" title="Link to this definition">¶</a></dt>
+<dd><p>Read data from a binary file.</p>
+<section id="id81">
+<h4>Parameters<a class="headerlink" href="#id81" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>file_path<span class="classifier">str</span></dt><dd><p>The path to the binary file.</p>
+</dd>
+</dl>
+</section>
+<section id="id82">
+<h4>Returns<a class="headerlink" href="#id82" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list or int</dt><dd><p>List of data read from the file if successful, or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.read_factor">
+<span class="sig-name descname"><span class="pre">read_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.read_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Read factor data from a stream.</p>
+<section id="id83">
+<h4>Parameters<a class="headerlink" href="#id83" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>stream<span class="classifier">QDataStream</span></dt><dd><p>The data stream.</p>
+</dd>
+</dl>
+</section>
+<section id="id84">
+<h4>Returns<a class="headerlink" href="#id84" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict</dt><dd><p>The factor data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.read_parameter">
+<span class="sig-name descname"><span class="pre">read_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.read_parameter" title="Link to this definition">¶</a></dt>
+<dd><p>Read parameter data from a stream.</p>
+<section id="id85">
+<h4>Parameters<a class="headerlink" href="#id85" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>stream<span class="classifier">QDataStream</span></dt><dd><p>The data stream.</p>
+</dd>
+</dl>
+</section>
+<section id="id86">
+<h4>Returns<a class="headerlink" href="#id86" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict</dt><dd><p>The parameter data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.read_project">
+<span class="sig-name descname"><span class="pre">read_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.read_project" title="Link to this definition">¶</a></dt>
+<dd><p>Read project data from a stream.</p>
+<section id="id87">
+<h4>Parameters<a class="headerlink" href="#id87" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>stream<span class="classifier">QDataStream</span></dt><dd><p>The data stream.</p>
+</dd>
+</dl>
+</section>
+<section id="id88">
+<h4>Returns<a class="headerlink" href="#id88" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict</dt><dd><p>The project data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.read_use_case">
+<span class="sig-name descname"><span class="pre">read_use_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.read_use_case" title="Link to this definition">¶</a></dt>
+<dd><p>Read use case data from a stream.</p>
+<section id="id89">
+<h4>Parameters<a class="headerlink" href="#id89" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>stream<span class="classifier">QDataStream</span></dt><dd><p>The data stream.</p>
+</dd>
+</dl>
+</section>
+<section id="id90">
+<h4>Returns<a class="headerlink" href="#id90" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict</dt><dd><p>The use case data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.rollback">
+<span class="sig-name descname"><span class="pre">rollback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.rollback" title="Link to this definition">¶</a></dt>
+<dd><p>Roll back the current database transaction.</p>
+<section id="id91">
+<h4>Returns<a class="headerlink" href="#id91" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the transaction was rolled back successfully, False otherwise.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.start_transaction">
+<span class="sig-name descname"><span class="pre">start_transaction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.start_transaction" title="Link to this definition">¶</a></dt>
+<dd><p>Start a new database transaction.</p>
+<section id="id92">
+<h4>Returns<a class="headerlink" href="#id92" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the transaction was started successfully, False otherwise.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.update_favorite_project">
+<span class="sig-name descname"><span class="pre">update_favorite_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">favorite</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.update_favorite_project" title="Link to this definition">¶</a></dt>
+<dd><p>Update the favorite status of a project.</p>
+<section id="id93">
+<h4>Parameters<a class="headerlink" href="#id93" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to update.</p>
+</dd>
+<dt>favorite<span class="classifier">bool</span></dt><dd><p>The new favorite status.</p>
+</dd>
+</dl>
+</section>
+<section id="id94">
+<h4>Returns<a class="headerlink" href="#id94" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.update_last_access">
+<span class="sig-name descname"><span class="pre">update_last_access</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_access</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.update_last_access" title="Link to this definition">¶</a></dt>
+<dd><p>Update the last access date of a project.</p>
+<section id="id95">
+<h4>Parameters<a class="headerlink" href="#id95" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to update.</p>
+</dd>
+<dt>last_access<span class="classifier">str</span></dt><dd><p>The new last access date.</p>
+</dd>
+</dl>
+</section>
+<section id="id96">
+<h4>Returns<a class="headerlink" href="#id96" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.update_project">
+<span class="sig-name descname"><span class="pre">update_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.update_project" title="Link to this definition">¶</a></dt>
+<dd><p>Update the details of a project.</p>
+<section id="id97">
+<h4>Parameters<a class="headerlink" href="#id97" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to update.</p>
+</dd>
+<dt>project_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing project data.</p>
+</dd>
+</dl>
+</section>
+<section id="id98">
+<h4>Returns<a class="headerlink" href="#id98" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.write_data_to_binary_file">
+<span class="sig-name descname"><span class="pre">write_data_to_binary_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.write_data_to_binary_file" title="Link to this definition">¶</a></dt>
+<dd><p>Write data to a binary file.</p>
+<section id="id99">
+<h4>Parameters<a class="headerlink" href="#id99" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data<span class="classifier">list</span></dt><dd><p>The data to write.</p>
+</dd>
+<dt>destination_file<span class="classifier">str</span></dt><dd><p>The path to the destination file.</p>
+</dd>
+</dl>
+</section>
+<section id="id100">
+<h4>Returns<a class="headerlink" href="#id100" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.projects_model.ProjectsModel.write_project_manifest">
+<span class="sig-name descname"><span class="pre">write_project_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_manifest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.projects_model.ProjectsModel.write_project_manifest" title="Link to this definition">¶</a></dt>
+<dd><p>Write the project manifest to a file.</p>
+<section id="id101">
+<h4>Parameters<a class="headerlink" href="#id101" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>file_path<span class="classifier">str</span></dt><dd><p>The path to the manifest file.</p>
+</dd>
+<dt>project_directory<span class="classifier">str</span></dt><dd><p>The directory containing the project files.</p>
+</dd>
+<dt>project_manifest<span class="classifier">dict</span></dt><dd><p>The project manifest data.</p>
+</dd>
+</dl>
+</section>
+<section id="id102">
+<h4>Returns<a class="headerlink" href="#id102" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Model.technicalFactors_model">
+<span id="technicalfactorsmodel-class"></span><h2>TechnicalFactorsModel Class<a class="headerlink" href="#module-Model.technicalFactors_model" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Model.technicalFactors_model.</span></span><span class="sig-name descname"><span class="pre">TechnicalFactorsModel</span></span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Model for managing technical factor data in the application.</p>
+<p>This class handles all database operations related to technical factors, including updating and retrieving technical factor data. It calculates and maintains the influence and results of some operations of this factors.</p>
+<section id="id103">
+<h3>Methods<a class="headerlink" href="#id103" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the TechnicalFactorsModel with default values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.categorize_influence">
+<span class="sig-name descname"><span class="pre">categorize_influence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">influence</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.categorize_influence" title="Link to this definition">¶</a></dt>
+<dd><p>Categorize the influence based on its value.</p>
+<section id="id104">
+<h4>Parameters<a class="headerlink" href="#id104" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>influence<span class="classifier">int</span></dt><dd><p>The influence value to categorize.</p>
+</dd>
+</dl>
+</section>
+<section id="id105">
+<h4>Returns<a class="headerlink" href="#id105" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>str</dt><dd><p>The category of the influence: ‘irrelevant’, ‘medium’, ‘essential’, or ‘undefined’.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.export_technical_factors_data">
+<span class="sig-name descname"><span class="pre">export_technical_factors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.export_technical_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Export technical factors data for a project.</p>
+<section id="id106">
+<h4>Parameters<a class="headerlink" href="#id106" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id107">
+<h4>Returns<a class="headerlink" href="#id107" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list or int</dt><dd><p>List of technical factors data, or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.get_TF_results">
+<span class="sig-name descname"><span class="pre">get_TF_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.get_TF_results" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate and return the results of the technical factors.</p>
+<section id="id108">
+<h4>Returns<a class="headerlink" href="#id108" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple containing the factor results, total TFactor, and factor counts.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.get_data" title="Link to this definition">¶</a></dt>
+<dd><p>Get detailed data for all technical factors in a project.</p>
+<section id="id109">
+<h4>Parameters<a class="headerlink" href="#id109" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id110">
+<h4>Returns<a class="headerlink" href="#id110" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict or int</dt><dd><p>Dictionary containing technical factors data and summary, or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.get_technical_factors_data">
+<span class="sig-name descname"><span class="pre">get_technical_factors_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.get_technical_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the technical factors data.</p>
+<section id="id111">
+<h4>Returns<a class="headerlink" href="#id111" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list</dt><dd><p>A list containing the technical factors data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.insert_technical_factors_default">
+<span class="sig-name descname"><span class="pre">insert_technical_factors_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.insert_technical_factors_default" title="Link to this definition">¶</a></dt>
+<dd><p>Insert default technical factors for a new project.</p>
+<section id="id112">
+<h4>Parameters<a class="headerlink" href="#id112" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id113">
+<h4>Returns<a class="headerlink" href="#id113" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.load_technical_factors_data">
+<span class="sig-name descname"><span class="pre">load_technical_factors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.load_technical_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load technical factors data from the database for a given project.</p>
+<section id="id114">
+<h4>Parameters<a class="headerlink" href="#id114" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id115">
+<h4>Returns<a class="headerlink" href="#id115" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.technicalFactors_model.TechnicalFactorsModel.update_technical_factor">
+<span class="sig-name descname"><span class="pre">update_technical_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.technicalFactors_model.TechnicalFactorsModel.update_technical_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Update a technical factor in the database.</p>
+<section id="id116">
+<h4>Parameters<a class="headerlink" href="#id116" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>factor_data<span class="classifier">dcit</span></dt><dd><p>Dictionary containing technical factor data.</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id117">
+<h4>Returns<a class="headerlink" href="#id117" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Model.useCases_model">
+<span id="usecasesmodel-class"></span><h2>UseCasesModel Class<a class="headerlink" href="#module-Model.useCases_model" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Model.useCases_model.</span></span><span class="sig-name descname"><span class="pre">UseCasesModel</span></span><a class="headerlink" href="#Model.useCases_model.UseCasesModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Model for managing use case data in the application.</p>
+<p>This class is responsible for all database operations related to use cases, including adding, updating, deleting, and retrieving use case data. It also calculates and maintains use case weights and counts for the project.</p>
+<section id="id118">
+<h3>Methods<a class="headerlink" href="#id118" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the UseCasesModel with default values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.create_use_case">
+<span class="sig-name descname"><span class="pre">create_use_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_case_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.create_use_case" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a new use case and inserts it into the database.</p>
+<section id="id119">
+<h4>Parameters<a class="headerlink" href="#id119" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>useCase_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing use case data.</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to which the use case belongs.</p>
+</dd>
+</dl>
+</section>
+<section id="id120">
+<h4>Returns<a class="headerlink" href="#id120" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple containing a status code indicating the result of the operation, and the ID of the new use case or None.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.delete_use_cases">
+<span class="sig-name descname"><span class="pre">delete_use_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_cases_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.delete_use_cases" title="Link to this definition">¶</a></dt>
+<dd><p>Deletes specified use cases from the database.</p>
+<section id="id121">
+<h4>Parameters<a class="headerlink" href="#id121" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>use_cases_data<span class="classifier">dict</span></dt><dd><p>A dictionary containing the details of the use cases to be deleted.</p>
+</dd>
+</dl>
+</section>
+<section id="id122">
+<h4>Returns<a class="headerlink" href="#id122" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple containing a status code indicating the result of the operation, and a list of missing IDs or None.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.export_use_cases_data">
+<span class="sig-name descname"><span class="pre">export_use_cases_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.export_use_cases_data" title="Link to this definition">¶</a></dt>
+<dd><p>Exports use case data for a specific project.</p>
+<section id="id123">
+<h4>Parameters<a class="headerlink" href="#id123" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project for which to export data.</p>
+</dd>
+</dl>
+</section>
+<section id="id124">
+<h4>Returns<a class="headerlink" href="#id124" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list or int</dt><dd><p>A list of use case data or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.get_data" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves use case data and summary for a specific project.</p>
+<section id="id125">
+<h4>Parameters<a class="headerlink" href="#id125" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project for which to retrieve data.</p>
+</dd>
+</dl>
+</section>
+<section id="id126">
+<h4>Returns<a class="headerlink" href="#id126" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict or int</dt><dd><p>A dictionary containing the use cases data and summary or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.get_summary_data">
+<span class="sig-name descname"><span class="pre">get_summary_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.get_summary_data" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a summary of the use cases data.</p>
+<section id="id127">
+<h4>Returns<a class="headerlink" href="#id127" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple containing the use cases count, total use cases, UUCW, total UUCW, and weights.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.get_use_cases_data">
+<span class="sig-name descname"><span class="pre">get_use_cases_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.get_use_cases_data" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the use cases data.</p>
+<section id="id128">
+<h4>Returns<a class="headerlink" href="#id128" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>list</dt><dd><p>A list containing the use cases data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.load_use_cases_data">
+<span class="sig-name descname"><span class="pre">load_use_cases_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.load_use_cases_data" title="Link to this definition">¶</a></dt>
+<dd><p>Loads use case data for a specific project.</p>
+<section id="id129">
+<h4>Parameters<a class="headerlink" href="#id129" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project for which to load use cases.</p>
+</dd>
+</dl>
+</section>
+<section id="id130">
+<h4>Returns<a class="headerlink" href="#id130" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.load_use_cases_weights">
+<span class="sig-name descname"><span class="pre">load_use_cases_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.load_use_cases_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Loads the use case weights for a specific project.</p>
+<section id="id131">
+<h4>Parameters<a class="headerlink" href="#id131" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project for which to load use case weights.</p>
+</dd>
+</dl>
+</section>
+<section id="id132">
+<h4>Returns<a class="headerlink" href="#id132" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.update_counts_and_UUCW">
+<span class="sig-name descname"><span class="pre">update_counts_and_UUCW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">complexity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">increment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.update_counts_and_UUCW" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the counts and UUCW based on the complexity.</p>
+<section id="id133">
+<h4>Parameters<a class="headerlink" href="#id133" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>complexity<span class="classifier">str</span></dt><dd><p>The complexity of the use case (Simple, Average, Complex).</p>
+</dd>
+<dt>increment<span class="classifier">bool, optional</span></dt><dd><p>Whether to increment or decrement the count (default is True).</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.update_use_case">
+<span class="sig-name descname"><span class="pre">update_use_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.update_use_case" title="Link to this definition">¶</a></dt>
+<dd><p>Updates an existing use case in the database.</p>
+<section id="id134">
+<h4>Parameters<a class="headerlink" href="#id134" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>old_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing old use case data.</p>
+</dd>
+<dt>new_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing new use case data.</p>
+</dd>
+</dl>
+</section>
+<section id="id135">
+<h4>Returns<a class="headerlink" href="#id135" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Model.useCases_model.UseCasesModel.update_use_cases_weights">
+<span class="sig-name descname"><span class="pre">update_use_cases_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.useCases_model.UseCasesModel.update_use_cases_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the weights for use cases and recalculates the UUCW.</p>
+<section id="id136">
+<h4>Parameters<a class="headerlink" href="#id136" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>weights<span class="classifier">dict</span></dt><dd><p>Dictionary containing the use cases weights.</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to which the weights belong.</p>
+</dd>
+</dl>
+</section>
+<section id="id137">
+<h4>Returns<a class="headerlink" href="#id137" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating the result of the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">QuickEst</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="controller.html">Controller Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_source.html">DataSource Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dialog.html">Dialog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-Model.actors_model">ActorsModel Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Model.dashboard_model">DashboardModel Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Model.environmentalFactors_model">EnvironmentalFactorsModel Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Model.projects_model">ProjectsModel Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Model.technicalFactors_model">TechnicalFactorsModel Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Model.useCases_model">UseCasesModel Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">UI Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="view.html">View Module</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="main.html" title="previous chapter">Main Module</a></li>
+      <li>Next: <a href="ui.html" title="next chapter">UI Module</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Iván Vega Moreno.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/model.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

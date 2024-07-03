@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>View Module &#8212; QuickEst 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Utils Module" href="utils.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="view-module">
+<h1>View Module<a class="headerlink" href="#view-module" title="Link to this heading">¶</a></h1>
+<p>The View module contains the views that manage the presentation of data. These views are responsible for the graphical user interface (GUI) and how data is displayed on the screen.</p>
+<section id="module-View.actors_view">
+<span id="actorsview-class"></span><h2>ActorsView Class<a class="headerlink" href="#module-View.actors_view" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">View.actors_view.</span></span><span class="sig-name descname"><span class="pre">ActorsView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>Class implementing the view for managing actors in the application.</p>
+<p>It handles the user interface related to actor management, providing functionalities to view, add, edit, and delete actors. It includes the setup of tables, action buttons, and a search bar for filtering actors, facilitating efficient information management.</p>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>actor_managed<span class="classifier">Signal</span></dt><dd><p>Signal emitted when an actor is managed (created or edited).</p>
+</dd>
+<dt>actors_deleted<span class="classifier">Signal</span></dt><dd><p>Signal emitted when actors are deleted.</p>
+</dd>
+<dt>actors_weights_updated<span class="classifier">Signal</span></dt><dd><p>Signal emitted when actor weights are updated.</p>
+</dd>
+<dt>text_changed<span class="classifier">Signal</span></dt><dd><p>Signal emitted when the text in the actor search bar changes.</p>
+</dd>
+</dl>
+</section>
+<section id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the actors view.</p>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>parent<span class="classifier">QWidget, optional</span></dt><dd><p>The parent widget of this view, default is None.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.create_actor">
+<span class="sig-name descname"><span class="pre">create_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.create_actor" title="Link to this definition">¶</a></dt>
+<dd><p>Emit a signal to create a new actor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.delete_actors">
+<span class="sig-name descname"><span class="pre">delete_actors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.delete_actors" title="Link to this definition">¶</a></dt>
+<dd><p>Delete the selected actors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.delete_rows">
+<span class="sig-name descname"><span class="pre">delete_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.delete_rows" title="Link to this definition">¶</a></dt>
+<dd><p>Delete rows from the actors table.</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>rows<span class="classifier">list of int, optional</span></dt><dd><p>List of row indices to delete. Ignored if clear_all is True.</p>
+</dd>
+<dt>clear_all<span class="classifier">bool, optional</span></dt><dd><p>If True, deletes all rows in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.display_message">
+<span class="sig-name descname"><span class="pre">display_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialog_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple_message'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.display_message" title="Link to this definition">¶</a></dt>
+<dd><p>Display a dialog with a message.</p>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>title<span class="classifier">str</span></dt><dd><p>The title of the message.</p>
+</dd>
+<dt>message<span class="classifier">str</span></dt><dd><p>The content of the message.</p>
+</dd>
+<dt>icon_path<span class="classifier">str</span></dt><dd><p>Path to the icon for the message.</p>
+</dd>
+<dt>dialog_type<span class="classifier">str, optional</span></dt><dd><p>Type of dialog, default is ‘simple_message’.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>QDialog</dt><dd><p>The displayed dialog.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.edit_actor">
+<span class="sig-name descname"><span class="pre">edit_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.edit_actor" title="Link to this definition">¶</a></dt>
+<dd><p>Edit the selected actor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.filter_table">
+<span class="sig-name descname"><span class="pre">filter_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.filter_table" title="Link to this definition">¶</a></dt>
+<dd><p>Filter the actors table based on the search text.</p>
+<section id="id3">
+<h4>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>search_text<span class="classifier">str</span></dt><dd><p>Text to filter the actors table.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h4>Returns<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>set</dt><dd><p>Set of rows that match the search text.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.search_actor">
+<span class="sig-name descname"><span class="pre">search_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.search_actor" title="Link to this definition">¶</a></dt>
+<dd><p>Emit a signal when the text in the actor search bar changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.setup_actors_ui">
+<span class="sig-name descname"><span class="pre">setup_actors_ui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.setup_actors_ui" title="Link to this definition">¶</a></dt>
+<dd><p>Setup the user interface for the actors table and the actors summary table.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.update_actors_summary">
+<span class="sig-name descname"><span class="pre">update_actors_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actors_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_actors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actors_UAW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_UAW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.update_actors_summary" title="Link to this definition">¶</a></dt>
+<dd><p>Update the actors summary table with the provided data.</p>
+<section id="id5">
+<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>actors_count<span class="classifier">dict</span></dt><dd><p>Count of actors by complexity.</p>
+</dd>
+<dt>total_actors<span class="classifier">int</span></dt><dd><p>Total number of actors.</p>
+</dd>
+<dt>actors_UAW<span class="classifier">dict</span></dt><dd><p>Unadjusted Actor Weights (UAW) by complexity.</p>
+</dd>
+<dt>total_UAW<span class="classifier">float</span></dt><dd><p>Total UAW.</p>
+</dd>
+<dt>weights<span class="classifier">dict</span></dt><dd><p>Actor weights by complexity.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.update_actors_table">
+<span class="sig-name descname"><span class="pre">update_actors_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.update_actors_table" title="Link to this definition">¶</a></dt>
+<dd><p>Update the actors table with the provided data.</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Saved actor data.</p>
+</dd>
+<dt>selected_row<span class="classifier">int, optional</span></dt><dd><p>Selected row to update, default is None.</p>
+</dd>
+<dt>update_rows<span class="classifier">bool, optional</span></dt><dd><p>Whether to update row numbers, default is True.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.update_actors_weights">
+<span class="sig-name descname"><span class="pre">update_actors_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.update_actors_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Update actor weights and emit the corresponding signal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.actors_view.ActorsView.update_table_visibility">
+<span class="sig-name descname"><span class="pre">update_table_visibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows_to_show</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.actors_view.ActorsView.update_table_visibility" title="Link to this definition">¶</a></dt>
+<dd><p>Update the visibility of rows in the actors table.</p>
+<section id="id7">
+<h4>Parameters<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>rows_to_show<span class="classifier">set</span></dt><dd><p>Set of rows to show.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-View.dashboard_view">
+<span id="dashboardview-class"></span><h2>DashboardView Class<a class="headerlink" href="#module-View.dashboard_view" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">View.dashboard_view.</span></span><span class="sig-name descname"><span class="pre">DashboardView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>Class implementing the view for the dashboard in the application.</p>
+<p>It handles the visualization of project metrics and charts, providing a summary of the data. It sets up charts and tables displaying important metrics, buttons to update data, and options to export information, facilitating project monitoring and analysis.</p>
+<section id="id8">
+<h3>Attributes<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>percentages_data<span class="classifier">Signal</span></dt><dd><p>Signal emitted with effort distribution percentages data.</p>
+</dd>
+<dt>UUCP_updated<span class="classifier">Signal</span></dt><dd><p>Signal emitted when UUCP values are updated.</p>
+</dd>
+<dt>TCF_updated<span class="classifier">Signal</span></dt><dd><p>Signal emitted when TCF values are updated.</p>
+</dd>
+<dt>ECF_updated<span class="classifier">Signal</span></dt><dd><p>Signal emitted when ECF values are updated.</p>
+</dd>
+<dt>report_generation<span class="classifier">Signal</span></dt><dd><p>Signal emitted to trigger report generation.</p>
+</dd>
+<dt>cf_data<span class="classifier">Signal</span></dt><dd><p>Signal emitted with conversion factor data.</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Methods<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the DashboardView.</p>
+<section id="id10">
+<h4>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>parent<span class="classifier">QWidget, optional</span></dt><dd><p>The parent widget of this view.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.configure_effort_distribution">
+<span class="sig-name descname"><span class="pre">configure_effort_distribution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.configure_effort_distribution" title="Link to this definition">¶</a></dt>
+<dd><p>Configure the effort distribution data and emit the percentages_data signal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.display_message">
+<span class="sig-name descname"><span class="pre">display_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialog_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple_message'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.display_message" title="Link to this definition">¶</a></dt>
+<dd><p>Display a message dialog.</p>
+<section id="id11">
+<h4>Parameters<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>title<span class="classifier">str</span></dt><dd><p>Title of the message dialog.</p>
+</dd>
+<dt>message<span class="classifier">str</span></dt><dd><p>Message content.</p>
+</dd>
+<dt>icon_path<span class="classifier">str</span></dt><dd><p>Path to the icon for the dialog.</p>
+</dd>
+<dt>dialog_type<span class="classifier">str, optional</span></dt><dd><p>Type of dialog, default is ‘simple_message’.</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h4>Returns<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>QDialog</dt><dd><p>The message dialog.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.edit_cf">
+<span class="sig-name descname"><span class="pre">edit_cf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.edit_cf" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to edit the conversion factor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.generate_report">
+<span class="sig-name descname"><span class="pre">generate_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.generate_report" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to generate a report.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.init_donut_chart">
+<span class="sig-name descname"><span class="pre">init_donut_chart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.init_donut_chart" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the donut chart for effort distribution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_E">
+<span class="sig-name descname"><span class="pre">set_E</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_E" title="Link to this definition">¶</a></dt>
+<dd><p>Set the E value in the UI.</p>
+<section id="id13">
+<h4>Parameters<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>E<span class="classifier">float</span></dt><dd><p>Effort in person-hours.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_ECF">
+<span class="sig-name descname"><span class="pre">set_ECF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ECF</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_ECF" title="Link to this definition">¶</a></dt>
+<dd><p>Set the ECF value in the UI.</p>
+<section id="id14">
+<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>ECF<span class="classifier">float</span></dt><dd><p>Environmental Complexity Factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_TCF">
+<span class="sig-name descname"><span class="pre">set_TCF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TCF</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_TCF" title="Link to this definition">¶</a></dt>
+<dd><p>Set the TCF value in the UI.</p>
+<section id="id15">
+<h4>Parameters<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>TCF<span class="classifier">float</span></dt><dd><p>Technical Complexity Factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_UCP">
+<span class="sig-name descname"><span class="pre">set_UCP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">UCP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_UCP" title="Link to this definition">¶</a></dt>
+<dd><p>Set the UCP value in the UI.</p>
+<section id="id16">
+<h4>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>UCP<span class="classifier">float</span></dt><dd><p>Use Case Points.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_UUCP">
+<span class="sig-name descname"><span class="pre">set_UUCP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">UUCP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_UUCP" title="Link to this definition">¶</a></dt>
+<dd><p>Set the UUCP value in the UI.</p>
+<section id="id17">
+<h4>Parameters<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>UUCP<span class="classifier">float</span></dt><dd><p>Unadjusted Use Case Points.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_actors_data">
+<span class="sig-name descname"><span class="pre">set_actors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actors_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_actors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UAW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_actors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Set actor data in the UI and update UUCP.</p>
+<section id="id18">
+<h4>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>actors_count<span class="classifier">dict</span></dt><dd><p>Dictionary of actor counts by complexity.</p>
+</dd>
+<dt>total_actors<span class="classifier">int</span></dt><dd><p>Total number of actors.</p>
+</dd>
+<dt>UAW<span class="classifier">float</span></dt><dd><p>Unadjusted Actor Weight.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_environmental_factors_data">
+<span class="sig-name descname"><span class="pre">set_environmental_factors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">environmentalFactors_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_environmental_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Set environmental factors data in the UI and update ECF.</p>
+<section id="id19">
+<h4>Parameters<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>environmentalFactors_count<span class="classifier">dict</span></dt><dd><p>Dictionary of environmental factors counts by relevance.</p>
+</dd>
+<dt>EFactor<span class="classifier">float</span></dt><dd><p>Environmental Factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_technical_factors_data">
+<span class="sig-name descname"><span class="pre">set_technical_factors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">technicalFactors_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_technical_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Set technical factors data in the UI and update TCF.</p>
+<section id="id20">
+<h4>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>technicalFactors_count<span class="classifier">dict</span></dt><dd><p>Dictionary of technical factors counts by relevance.</p>
+</dd>
+<dt>TFactor<span class="classifier">float</span></dt><dd><p>Technical Factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.set_use_cases_data">
+<span class="sig-name descname"><span class="pre">set_use_cases_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">useCases_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_useCases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UUCW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.set_use_cases_data" title="Link to this definition">¶</a></dt>
+<dd><p>Set use case data in the UI and update UUCP.</p>
+<section id="id21">
+<h4>Parameters<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>useCases_count<span class="classifier">dict</span></dt><dd><p>Dictionary of use case counts by complexity.</p>
+</dd>
+<dt>total_useCases<span class="classifier">int</span></dt><dd><p>Total number of use cases.</p>
+</dd>
+<dt>UUCW<span class="classifier">float</span></dt><dd><p>Unadjusted Use Case Weight.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.setup_dashboard_ui">
+<span class="sig-name descname"><span class="pre">setup_dashboard_ui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.setup_dashboard_ui" title="Link to this definition">¶</a></dt>
+<dd><p>Setup the user interface elements for the dashboard.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.update_cf">
+<span class="sig-name descname"><span class="pre">update_cf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.update_cf" title="Link to this definition">¶</a></dt>
+<dd><p>Update the conversion factor display.</p>
+<section id="id22">
+<h4>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>cf<span class="classifier">float</span></dt><dd><p>The conversion factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.update_donut_chart">
+<span class="sig-name descname"><span class="pre">update_donut_chart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.update_donut_chart" title="Link to this definition">¶</a></dt>
+<dd><p>Update the data in the donut chart.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.dashboard_view.DashboardView.update_effort_distribution">
+<span class="sig-name descname"><span class="pre">update_effort_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentages</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_hours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_effort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.dashboard_view.DashboardView.update_effort_distribution" title="Link to this definition">¶</a></dt>
+<dd><p>Update the effort distribution table and donut chart.</p>
+<section id="id23">
+<h4>Parameters<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>percentages<span class="classifier">dict, optional</span></dt><dd><p>Dictionary of effort distribution percentages.</p>
+</dd>
+<dt>person_hours<span class="classifier">dict, optional</span></dt><dd><p>Dictionary of effort distribution in person-hours.</p>
+</dd>
+<dt>total_effort<span class="classifier">float, optional</span></dt><dd><p>Total effort in person-hours.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-View.environmentalFactors_view">
+<span id="environmentalfactorsview-class"></span><h2>EnvironmentalFactorsView Class<a class="headerlink" href="#module-View.environmentalFactors_view" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">View.environmentalFactors_view.</span></span><span class="sig-name descname"><span class="pre">EnvironmentalFactorsView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>Class implementing the view for managing environmental factors.</p>
+<p>It handles the user interface related to environmental factors management, providing functionalities to view and update this factors. It includes the setup of tables and action buttons, facilitating efficient information management.</p>
+<section id="id24">
+<h3>Attributes<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>factor_saved<span class="classifier">Signal</span></dt><dd><p>Signal emitted when an environmental factor is saved.</p>
+</dd>
+</dl>
+</section>
+<section id="id25">
+<h3>Methods<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the view with the given parent.</p>
+<section id="id26">
+<h4>Parameters<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>parent<span class="classifier">QWidget, optional</span></dt><dd><p>Parent widget.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.check_enable_buttons">
+<span class="sig-name descname"><span class="pre">check_enable_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.check_enable_buttons" title="Link to this definition">¶</a></dt>
+<dd><p>Enable or disable the save button based on the current input values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.display_message">
+<span class="sig-name descname"><span class="pre">display_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialog_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple_message'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.display_message" title="Link to this definition">¶</a></dt>
+<dd><p>Display a message dialog.</p>
+<section id="id27">
+<h4>Parameters<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>title<span class="classifier">str</span></dt><dd><p>Title of the message dialog.</p>
+</dd>
+<dt>message<span class="classifier">str</span></dt><dd><p>Message content.</p>
+</dd>
+<dt>icon_path<span class="classifier">str</span></dt><dd><p>Path to the icon for the dialog.</p>
+</dd>
+<dt>dialog_type<span class="classifier">str, optional</span></dt><dd><p>Type of dialog, default is ‘simple_message’.</p>
+</dd>
+</dl>
+</section>
+<section id="id28">
+<h4>Returns<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>QDialog</dt><dd><p>The message dialog.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.save_environmental_factor">
+<span class="sig-name descname"><span class="pre">save_environmental_factor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.save_environmental_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Emit the factor_saved signal with the current environmental factor data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.setup_environmental_factors_ui">
+<span class="sig-name descname"><span class="pre">setup_environmental_factors_ui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.setup_environmental_factors_ui" title="Link to this definition">¶</a></dt>
+<dd><p>Setup the user interface elements for the environmental factors view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.update_environmental_factors_summary">
+<span class="sig-name descname"><span class="pre">update_environmental_factors_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.update_environmental_factors_summary" title="Link to this definition">¶</a></dt>
+<dd><p>Update the summary table with the environmental factors counts.</p>
+<section id="id29">
+<h4>Parameters<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>factors_count<span class="classifier">dict</span></dt><dd><p>Dictionary containing counts of environmental factors by relevance.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.update_environmental_factors_table">
+<span class="sig-name descname"><span class="pre">update_environmental_factors_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.update_environmental_factors_table" title="Link to this definition">¶</a></dt>
+<dd><p>Update the environmental factors table with the saved data.</p>
+<section id="id30">
+<h4>Parameters<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Dictionary containing the saved data for the environmental factor.</p>
+</dd>
+<dt>EFactor<span class="classifier">float</span></dt><dd><p>The updated environmental factor value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.update_environmental_factors_tooltip">
+<span class="sig-name descname"><span class="pre">update_environmental_factors_tooltip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.update_environmental_factors_tooltip" title="Link to this definition">¶</a></dt>
+<dd><p>Update the tooltip for the environmental factors based on the selected factor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.environmentalFactors_view.EnvironmentalFactorsView.update_weights_limits">
+<span class="sig-name descname"><span class="pre">update_weights_limits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.environmentalFactors_view.EnvironmentalFactorsView.update_weights_limits" title="Link to this definition">¶</a></dt>
+<dd><p>Update the minimum and maximum limits of factor weights based on the selected factor in the QComboBox.</p>
+<section id="id31">
+<h4>Parameters<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>index<span class="classifier">int</span></dt><dd><p>The index of the selected item in the QComboBox.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-View.projects_view">
+<span id="projectsview-class"></span><h2>ProjectsView Class<a class="headerlink" href="#module-View.projects_view" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">View.projects_view.</span></span><span class="sig-name descname"><span class="pre">ProjectsView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>Class implementing the view for managing projects in the application.</p>
+<p>It provides functionalities to view, add, edit, delete, download, export and import projects, setting up tables, action buttons, and a search bar, facilitating efficient information management.</p>
+<section id="id32">
+<h3>Attributes<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>text_changed<span class="classifier">Signal</span></dt><dd><p>Signal emitted when the search text changes.</p>
+</dd>
+<dt>project_managed<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project is managed (created or edited).</p>
+</dd>
+<dt>project_imported<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project is imported.</p>
+</dd>
+<dt>project_deleted<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project is deleted.</p>
+</dd>
+<dt>project_favorite<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project’s favorite status is changed.</p>
+</dd>
+<dt>project_selected<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project is selected.</p>
+</dd>
+<dt>project_downloaded<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project is downloaded.</p>
+</dd>
+<dt>projects_exported<span class="classifier">Signal</span></dt><dd><p>Signal emitted when projects are exported.</p>
+</dd>
+<dt>report_request<span class="classifier">Signal</span></dt><dd><p>Signal emitted to generate a project report.</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h3>Methods<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the view with the given parent.</p>
+<section id="id34">
+<h4>Parameters<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>parent<span class="classifier">QWidget, optional</span></dt><dd><p>Parent widget.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.add_favorite_button">
+<span class="sig-name descname"><span class="pre">add_favorite_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_widget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">favorite</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.add_favorite_button" title="Link to this definition">¶</a></dt>
+<dd><p>Add a favorite button to the projects table.</p>
+<section id="id35">
+<h4>Parameters<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>table_widget<span class="classifier">QTableWidget</span></dt><dd><p>The projects table widget.</p>
+</dd>
+<dt>row<span class="classifier">int</span></dt><dd><p>Row index to add the button.</p>
+</dd>
+<dt>column<span class="classifier">int</span></dt><dd><p>Column index to add the button.</p>
+</dd>
+<dt>favorite<span class="classifier">bool</span></dt><dd><p>Initial favorite status.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.add_options_button">
+<span class="sig-name descname"><span class="pre">add_options_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_widget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.add_options_button" title="Link to this definition">¶</a></dt>
+<dd><p>Add an options button to the projects table.</p>
+<section id="id36">
+<h4>Parameters<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>table_widget<span class="classifier">QTableWidget</span></dt><dd><p>The projects table widget.</p>
+</dd>
+<dt>row<span class="classifier">int</span></dt><dd><p>Row index to add the button.</p>
+</dd>
+<dt>column<span class="classifier">int</span></dt><dd><p>Column index to add the button.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.create_project">
+<span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.create_project" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to create a new project.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.delete_project">
+<span class="sig-name descname"><span class="pre">delete_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.delete_project" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to delete a project.</p>
+<section id="id37">
+<h4>Parameters<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>button<span class="classifier">QToolButton</span></dt><dd><p>The button to trigger the deletion.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.display_message">
+<span class="sig-name descname"><span class="pre">display_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialog_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple_message'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ok_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.display_message" title="Link to this definition">¶</a></dt>
+<dd><p>Display a message dialog.</p>
+<section id="id38">
+<h4>Parameters<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>title<span class="classifier">str</span></dt><dd><p>Title of the message dialog.</p>
+</dd>
+<dt>message<span class="classifier">str</span></dt><dd><p>Message content.</p>
+</dd>
+<dt>icon_path<span class="classifier">str</span></dt><dd><p>Path to the icon for the dialog.</p>
+</dd>
+<dt>dialog_type<span class="classifier">str, optional</span></dt><dd><p>Type of dialog, default is ‘simple_message’.</p>
+</dd>
+<dt>ok_callback<span class="classifier">callable, optional</span></dt><dd><p>Callback function to be called when OK button is clicked.</p>
+</dd>
+</dl>
+</section>
+<section id="id39">
+<h4>Returns<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>QDialog</dt><dd><p>The message dialog.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.download_project">
+<span class="sig-name descname"><span class="pre">download_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.download_project" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to download a project.</p>
+<section id="id40">
+<h4>Parameters<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>button<span class="classifier">QToolButton</span></dt><dd><p>The button to trigger the download.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.edit_project">
+<span class="sig-name descname"><span class="pre">edit_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.edit_project" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to edit an existing project.</p>
+<section id="id41">
+<h4>Parameters<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>button<span class="classifier">QToolButton</span></dt><dd><p>The button to trigger the edit.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.export_projects">
+<span class="sig-name descname"><span class="pre">export_projects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.export_projects" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to export projects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.filter_table">
+<span class="sig-name descname"><span class="pre">filter_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.filter_table" title="Link to this definition">¶</a></dt>
+<dd><p>Filter the projects table based on the search text.</p>
+<section id="id42">
+<h4>Parameters<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>search_text<span class="classifier">str</span></dt><dd><p>Text to filter the projects table.</p>
+</dd>
+</dl>
+</section>
+<section id="id43">
+<h4>Returns<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>set</dt><dd><p>Set of rows that match the search text.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.generate_report">
+<span class="sig-name descname"><span class="pre">generate_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.generate_report" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to generate a project report.</p>
+<section id="id44">
+<h4>Parameters<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>button<span class="classifier">QToolButton</span></dt><dd><p>The button to trigger the download of reports.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.import_project">
+<span class="sig-name descname"><span class="pre">import_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.import_project" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to import a project.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.on_table_resize">
+<span class="sig-name descname"><span class="pre">on_table_resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.on_table_resize" title="Link to this definition">¶</a></dt>
+<dd><p>Handles the resize event for the projects table.</p>
+<p>This method adjusts the column widths and resize modes of the projects table
+based on the current width of the table.</p>
+<section id="id45">
+<h4>Parameters<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>event<span class="classifier">QResizeEvent</span></dt><dd><p>The resize event that triggered this handler.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.open_project">
+<span class="sig-name descname"><span class="pre">open_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.open_project" title="Link to this definition">¶</a></dt>
+<dd><p>Open the project based on the selected row or project ID.</p>
+<section id="id46">
+<h4>Parameters<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>row<span class="classifier">int, optional</span></dt><dd><p>Row index of the project in the table.</p>
+</dd>
+<dt>project_id<span class="classifier">int, optional</span></dt><dd><p>ID of the project.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.remove_table_row">
+<span class="sig-name descname"><span class="pre">remove_table_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.remove_table_row" title="Link to this definition">¶</a></dt>
+<dd><p>Remove a row from the projects table.</p>
+<section id="id47">
+<h4>Parameters<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>row<span class="classifier">int</span></dt><dd><p>Row index to remove.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.search_project">
+<span class="sig-name descname"><span class="pre">search_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.search_project" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal when the search text changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.set_favorite">
+<span class="sig-name descname"><span class="pre">set_favorite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">favorite_button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.set_favorite" title="Link to this definition">¶</a></dt>
+<dd><p>Toggle the favorite status of a project.</p>
+<section id="id48">
+<h4>Parameters<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>favorite_button<span class="classifier">QPushButton</span></dt><dd><p>The favorite button to toggle.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.setup_projects_ui">
+<span class="sig-name descname"><span class="pre">setup_projects_ui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.setup_projects_ui" title="Link to this definition">¶</a></dt>
+<dd><p>Setup the user interface elements for the projects view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.sort_favorites">
+<span class="sig-name descname"><span class="pre">sort_favorites</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.sort_favorites" title="Link to this definition">¶</a></dt>
+<dd><p>Sort projects by favorite status.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.update_favorite_button">
+<span class="sig-name descname"><span class="pre">update_favorite_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_favorite</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.update_favorite_button" title="Link to this definition">¶</a></dt>
+<dd><p>Update the favorite button in the projects table.</p>
+<section id="id49">
+<h4>Parameters<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>row<span class="classifier">int</span></dt><dd><p>Row index to update.</p>
+</dd>
+<dt>is_favorite<span class="classifier">bool</span></dt><dd><p>New favorite status.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.update_last_access">
+<span class="sig-name descname"><span class="pre">update_last_access</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_access</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.update_last_access" title="Link to this definition">¶</a></dt>
+<dd><p>Update the last access time of a project in the table.</p>
+<section id="id50">
+<h4>Parameters<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>row<span class="classifier">int</span></dt><dd><p>Row index of the project.</p>
+</dd>
+<dt>last_access<span class="classifier">str</span></dt><dd><p>Last access time to set.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.update_projects_table">
+<span class="sig-name descname"><span class="pre">update_projects_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.update_projects_table" title="Link to this definition">¶</a></dt>
+<dd><p>Update the projects table with the provided data.</p>
+<section id="id51">
+<h4>Parameters<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data<span class="classifier">dict</span></dt><dd><p>Project data to update.</p>
+</dd>
+<dt>row_position<span class="classifier">int, optional</span></dt><dd><p>Row position to update, default is None.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.projects_view.ProjectsView.update_table_visibility">
+<span class="sig-name descname"><span class="pre">update_table_visibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows_to_show</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.projects_view.ProjectsView.update_table_visibility" title="Link to this definition">¶</a></dt>
+<dd><p>Update the visibility of rows in the projects table.</p>
+<section id="id52">
+<h4>Parameters<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>rows_to_show<span class="classifier">set</span></dt><dd><p>Set of rows to show.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-View.technicalFactors_view">
+<span id="technicalfactorsview-class"></span><h2>TechnicalFactorsView Class<a class="headerlink" href="#module-View.technicalFactors_view" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">View.technicalFactors_view.</span></span><span class="sig-name descname"><span class="pre">TechnicalFactorsView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>Class implementing the view for managing technical factors.</p>
+<p>It handles the user interface related to technical factors management, providing functionalities to view and update this factors. It includes the setup of tables and action buttons, facilitating efficient information management.</p>
+<section id="id53">
+<h3>Attributes<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>factor_saved<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a technical factor is saved.</p>
+</dd>
+</dl>
+</section>
+<section id="id54">
+<h3>Methods<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the view with the given parent.</p>
+<section id="id55">
+<h4>Parameters<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>parent<span class="classifier">QWidget, optional</span></dt><dd><p>Parent widget.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.check_enable_buttons">
+<span class="sig-name descname"><span class="pre">check_enable_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.check_enable_buttons" title="Link to this definition">¶</a></dt>
+<dd><p>Enable or disable the save button based on the validity of the input.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.display_message">
+<span class="sig-name descname"><span class="pre">display_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialog_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple_message'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.display_message" title="Link to this definition">¶</a></dt>
+<dd><p>Display a message dialog.</p>
+<section id="id56">
+<h4>Parameters<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>title<span class="classifier">str</span></dt><dd><p>Title of the message dialog.</p>
+</dd>
+<dt>message<span class="classifier">str</span></dt><dd><p>Message content.</p>
+</dd>
+<dt>icon_path<span class="classifier">str</span></dt><dd><p>Path to the icon for the dialog.</p>
+</dd>
+<dt>dialog_type<span class="classifier">str, optional</span></dt><dd><p>Type of dialog, default is ‘simple_message’.</p>
+</dd>
+</dl>
+</section>
+<section id="id57">
+<h4>Returns<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>QDialog</dt><dd><p>The message dialog.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.save_technical_factor">
+<span class="sig-name descname"><span class="pre">save_technical_factor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.save_technical_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Emit the factor_saved signal with the current technical factor data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.setup_technical_factors_ui">
+<span class="sig-name descname"><span class="pre">setup_technical_factors_ui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.setup_technical_factors_ui" title="Link to this definition">¶</a></dt>
+<dd><p>Setup the user interface elements for the technical factors view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.update_technical_factors_summary">
+<span class="sig-name descname"><span class="pre">update_technical_factors_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.update_technical_factors_summary" title="Link to this definition">¶</a></dt>
+<dd><p>Update the technical factors summary table with the provided data.</p>
+<section id="id58">
+<h4>Parameters<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>factors_count<span class="classifier">dict</span></dt><dd><p>Dictionary containing the count of factors for each category.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.update_technical_factors_table">
+<span class="sig-name descname"><span class="pre">update_technical_factors_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.update_technical_factors_table" title="Link to this definition">¶</a></dt>
+<dd><p>Update the technical factors table with the provided data.</p>
+<section id="id59">
+<h4>Parameters<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Dictionary containing the saved data for a technical factor.</p>
+</dd>
+<dt>TFactor<span class="classifier">float</span></dt><dd><p>The updated technical factor value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.update_technical_factors_tooltip">
+<span class="sig-name descname"><span class="pre">update_technical_factors_tooltip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.update_technical_factors_tooltip" title="Link to this definition">¶</a></dt>
+<dd><p>Update tooltips for the technical factors based on the selected factor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.technicalFactors_view.TechnicalFactorsView.update_weights_limits">
+<span class="sig-name descname"><span class="pre">update_weights_limits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.technicalFactors_view.TechnicalFactorsView.update_weights_limits" title="Link to this definition">¶</a></dt>
+<dd><p>Update the minimum and maximum limits of factor weights based on the selected factor in the QComboBox.</p>
+<section id="id60">
+<h4>Parameters<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>index<span class="classifier">int</span></dt><dd><p>The index of the selected item in the QComboBox.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-View.useCases_view">
+<span id="usecasesview-class"></span><h2>UseCasesView Class<a class="headerlink" href="#module-View.useCases_view" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">View.useCases_view.</span></span><span class="sig-name descname"><span class="pre">UseCasesView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>Class implementing the view for managing use cases in the application.</p>
+<p>It handles the user interface related to use cases management, providing functionalities to view, add, edit, and delete use cases. It includes the setup of tables, action buttons, and a search bar for filtering use cases, facilitating efficient information management.</p>
+<section id="id61">
+<h3>Attributes<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>useCase_managed<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a use case is managed.</p>
+</dd>
+<dt>useCases_deleted<span class="classifier">Signal</span></dt><dd><p>Signal emitted when use cases are deleted.</p>
+</dd>
+<dt>useCases_weights_updated<span class="classifier">Signal</span></dt><dd><p>Signal emitted when use cases weights are updated.</p>
+</dd>
+<dt>text_changed<span class="classifier">Signal</span></dt><dd><p>Signal emitted when the search text changes.</p>
+</dd>
+</dl>
+</section>
+<section id="id62">
+<h3>Methods<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the view with the given parent.</p>
+<section id="id63">
+<h4>Parameters<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>parent<span class="classifier">QWidget, optional</span></dt><dd><p>Parent widget.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.create_use_case">
+<span class="sig-name descname"><span class="pre">create_use_case</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.create_use_case" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to create a new use case.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.delete_rows">
+<span class="sig-name descname"><span class="pre">delete_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.delete_rows" title="Link to this definition">¶</a></dt>
+<dd><p>Delete rows from the use cases table.</p>
+<section id="id64">
+<h4>Parameters<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>rows<span class="classifier">list of int, optional</span></dt><dd><p>List of row indices to delete. Ignored if clear_all is True.</p>
+</dd>
+<dt>clear_all<span class="classifier">bool, optional</span></dt><dd><p>If True, deletes all rows in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.delete_use_cases">
+<span class="sig-name descname"><span class="pre">delete_use_cases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.delete_use_cases" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to delete the selected use case(s).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.display_message">
+<span class="sig-name descname"><span class="pre">display_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialog_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple_message'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.display_message" title="Link to this definition">¶</a></dt>
+<dd><p>Display a message dialog.</p>
+<section id="id65">
+<h4>Parameters<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>title<span class="classifier">str</span></dt><dd><p>Title of the message dialog.</p>
+</dd>
+<dt>message<span class="classifier">str</span></dt><dd><p>Message content.</p>
+</dd>
+<dt>icon_path<span class="classifier">str</span></dt><dd><p>Path to the icon for the dialog.</p>
+</dd>
+<dt>dialog_type<span class="classifier">str, optional</span></dt><dd><p>Type of dialog, default is ‘simple_message’.</p>
+</dd>
+</dl>
+</section>
+<section id="id66">
+<h4>Returns<a class="headerlink" href="#id66" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>QDialog</dt><dd><p>The message dialog.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.edit_use_case">
+<span class="sig-name descname"><span class="pre">edit_use_case</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.edit_use_case" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal to edit the selected use case.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.filter_table">
+<span class="sig-name descname"><span class="pre">filter_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.filter_table" title="Link to this definition">¶</a></dt>
+<dd><p>Filter the use cases table based on the search text.</p>
+<section id="id67">
+<h4>Parameters<a class="headerlink" href="#id67" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>search_text<span class="classifier">str</span></dt><dd><p>The text to search for in the table.</p>
+</dd>
+</dl>
+</section>
+<section id="id68">
+<h4>Returns<a class="headerlink" href="#id68" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>set of int</dt><dd><p>Set of row indices that match the search text.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.search_use_case">
+<span class="sig-name descname"><span class="pre">search_use_case</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.search_use_case" title="Link to this definition">¶</a></dt>
+<dd><p>Emit signal when the search text changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.setup_use_cases_ui">
+<span class="sig-name descname"><span class="pre">setup_use_cases_ui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.setup_use_cases_ui" title="Link to this definition">¶</a></dt>
+<dd><p>Setup the user interface elements for the use cases view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.update_table_visibility">
+<span class="sig-name descname"><span class="pre">update_table_visibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows_to_show</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.update_table_visibility" title="Link to this definition">¶</a></dt>
+<dd><p>Update the visibility of rows in the use cases table.</p>
+<section id="id69">
+<h4>Parameters<a class="headerlink" href="#id69" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>rows_to_show<span class="classifier">set of int</span></dt><dd><p>Set of row indices to show.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.update_use_cases_summary">
+<span class="sig-name descname"><span class="pre">update_use_cases_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">useCases_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_useCases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useCases_UUCW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_UUCW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.update_use_cases_summary" title="Link to this definition">¶</a></dt>
+<dd><p>Update the use cases summary table with the provided data.</p>
+<section id="id70">
+<h4>Parameters<a class="headerlink" href="#id70" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>useCases_count<span class="classifier">dict</span></dt><dd><p>Dictionary containing the count of use cases for each complexity.</p>
+</dd>
+<dt>total_useCases<span class="classifier">int</span></dt><dd><p>Total number of use cases.</p>
+</dd>
+<dt>useCases_UUCW<span class="classifier">dict</span></dt><dd><p>Dictionary containing the UUCW for each complexity.</p>
+</dd>
+<dt>total_UUCW<span class="classifier">int</span></dt><dd><p>Total UUCW.</p>
+</dd>
+<dt>weights<span class="classifier">dict</span></dt><dd><p>Dictionary containing the weights for each complexity.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.update_use_cases_table">
+<span class="sig-name descname"><span class="pre">update_use_cases_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.update_use_cases_table" title="Link to this definition">¶</a></dt>
+<dd><p>Update the use cases table with the provided data.</p>
+<section id="id71">
+<h4>Parameters<a class="headerlink" href="#id71" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Dictionary containing the saved data for a use case.</p>
+</dd>
+<dt>selected_row<span class="classifier">int, optional</span></dt><dd><p>Row index to update, by default None.</p>
+</dd>
+<dt>update_rows<span class="classifier">bool, optional</span></dt><dd><p>Whether to update row numbers, default is True.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="View.useCases_view.UseCasesView.update_use_cases_weights">
+<span class="sig-name descname"><span class="pre">update_use_cases_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#View.useCases_view.UseCasesView.update_use_cases_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Update the use cases weights based on the summary table data.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">QuickEst</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="controller.html">Controller Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_source.html">DataSource Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dialog.html">Dialog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">UI Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">View Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-View.actors_view">ActorsView Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-View.dashboard_view">DashboardView Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-View.environmentalFactors_view">EnvironmentalFactorsView Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-View.projects_view">ProjectsView Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-View.technicalFactors_view">TechnicalFactorsView Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-View.useCases_view">UseCasesView Class</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="utils.html" title="previous chapter">Utils Module</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Iván Vega Moreno.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/view.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

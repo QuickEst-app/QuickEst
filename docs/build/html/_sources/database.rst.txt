@@ -1,0 +1,11 @@
+Database Module
+===============
+
+DataBase Class
+-----------------
+
+.. automodule:: DataSource.database
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :special-members: __init__

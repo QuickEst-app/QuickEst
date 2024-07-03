@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Controller Module &#8212; QuickEst 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DataSource Module" href="data_source.html" />
+    <link rel="prev" title="Welcome to QuickEst’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="controller-module">
+<h1>Controller Module<a class="headerlink" href="#controller-module" title="Link to this heading">¶</a></h1>
+<p>The Controller module is a fundamental part of the application architecture, responsible for managing the business logic and the interaction between the user interface and the data logic. This acts as an intermediary that handles user events, updates the view and processes data coming from the model. Furthermore, it ensures that each component of the application works consistently and efficiently, providing a smooth user experience.</p>
+<section id="module-Controller.actors_controller">
+<span id="actorscontroller-class"></span><h2>ActorsController Class<a class="headerlink" href="#module-Controller.actors_controller" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Controller.actors_controller.</span></span><span class="sig-name descname"><span class="pre">ActorsController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<p>Controller for managing actor operations in the application.</p>
+<p>This class acts as the intermediary between the view and the actor model. It handles user interactions, business logic, and updates the view based on changes in the model.</p>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>actors_data<span class="classifier">Signal</span></dt><dd><p>Signal to update the dashboard with actors data.</p>
+</dd>
+</dl>
+</section>
+<section id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the ActorsController.</p>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>view<span class="classifier">ActorsView</span></dt><dd><p>The view that this controller will interact with.</p>
+</dd>
+<dt>model<span class="classifier">ActorsModel</span></dt><dd><p>The model that this controller will interact with.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.connect_signals">
+<span class="sig-name descname"><span class="pre">connect_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.connect_signals" title="Link to this definition">¶</a></dt>
+<dd><p>Connect signals from the view to the appropriate handler methods.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.create_actor">
+<span class="sig-name descname"><span class="pre">create_actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.create_actor" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new actor in the database.</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Data for the new actor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.delete_actors">
+<span class="sig-name descname"><span class="pre">delete_actors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actors_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.delete_actors" title="Link to this definition">¶</a></dt>
+<dd><p>Delete selected actors from the database.</p>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>actors_data<span class="classifier">list of dict</span></dt><dd><p>Information of the actors to be deleted.</p>
+</dd>
+<dt>selected_rows<span class="classifier">list of int</span></dt><dd><p>Rows selected in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.filter_actors_table">
+<span class="sig-name descname"><span class="pre">filter_actors_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.filter_actors_table" title="Link to this definition">¶</a></dt>
+<dd><p>Filter the actors table based on search text.</p>
+<section id="id3">
+<h4>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>search_text<span class="classifier">str</span></dt><dd><p>The text to search for in the actors table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.load_actors">
+<span class="sig-name descname"><span class="pre">load_actors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.load_actors" title="Link to this definition">¶</a></dt>
+<dd><p>Load actors for the given project.</p>
+<section id="id4">
+<h4>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing project data including the project ID.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.open_management_dialog">
+<span class="sig-name descname"><span class="pre">open_management_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_send</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.open_management_dialog" title="Link to this definition">¶</a></dt>
+<dd><p>Open the management dialog for creating or editing an actor.</p>
+<section id="id5">
+<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>action<span class="classifier">str</span></dt><dd><p>The action to perform (“new” or “edit”).</p>
+</dd>
+<dt>option<span class="classifier">str</span></dt><dd><p>Additional options for the action.</p>
+</dd>
+<dt>data_send<span class="classifier">dict</span></dt><dd><p>Data to be sent to the dialog.</p>
+</dd>
+<dt>selected_row<span class="classifier">int</span></dt><dd><p>The selected row in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.open_weights_dialog">
+<span class="sig-name descname"><span class="pre">open_weights_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.open_weights_dialog" title="Link to this definition">¶</a></dt>
+<dd><p>Open the dialog to update actors’ weights.</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>weights<span class="classifier">dict</span></dt><dd><p>Dictionary containing the current weights of the actors.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.update_actor">
+<span class="sig-name descname"><span class="pre">update_actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_send</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.update_actor" title="Link to this definition">¶</a></dt>
+<dd><p>Update an existing actor in the database.</p>
+<section id="id7">
+<h4>Parameters<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_send<span class="classifier">dict</span></dt><dd><p>Original data of the actor to be updated.</p>
+</dd>
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>New data for the actor.</p>
+</dd>
+<dt>selected_row<span class="classifier">int</span></dt><dd><p>The selected row in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.actors_controller.ActorsController.update_actors_weights">
+<span class="sig-name descname"><span class="pre">update_actors_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights_saved</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.actors_controller.ActorsController.update_actors_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Update the weights of the actors.</p>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>weights_saved<span class="classifier">dict</span></dt><dd><p>Dictionary containing the new weights of the actors.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Controller.dashboard_controller">
+<span id="dashboardcontroller-class"></span><h2>DashboardController Class<a class="headerlink" href="#module-Controller.dashboard_controller" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Controller.dashboard_controller.</span></span><span class="sig-name descname"><span class="pre">DashboardController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<p>Controller for managing dashboard operations in the application.</p>
+<p>This class acts as the intermediary between the view and the dashboard model. It handles user interactions, business logic, and updates the view based on changes in the model.</p>
+<section id="id9">
+<h3>Attributes<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>report_generation_request<span class="classifier">Signal</span></dt><dd><p>Signal to request report generation from the main application.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h3>Methods<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the DashboardController.</p>
+<section id="id11">
+<h4>Parameters<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>view<span class="classifier">DashboardView</span></dt><dd><p>The view that this controller will interact with.</p>
+</dd>
+<dt>model<span class="classifier">DashboardModel</span></dt><dd><p>The model that this controller will interact with.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.connect_signals">
+<span class="sig-name descname"><span class="pre">connect_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.connect_signals" title="Link to this definition">¶</a></dt>
+<dd><p>Connect signals from the view to the appropriate handler methods.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.handle_cf_data_saved">
+<span class="sig-name descname"><span class="pre">handle_cf_data_saved</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cf_saved</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.handle_cf_data_saved" title="Link to this definition">¶</a></dt>
+<dd><p>Handle the data saved from the CF dialog.</p>
+<section id="id12">
+<h4>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>cf_saved<span class="classifier">float</span></dt><dd><p>Conversion Factor data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.handle_percentage_data_saved">
+<span class="sig-name descname"><span class="pre">handle_percentage_data_saved</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentages_saved</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.handle_percentage_data_saved" title="Link to this definition">¶</a></dt>
+<dd><p>Handle the data saved from the percentage dialog.</p>
+<section id="id13">
+<h4>Parameters<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>percentages_saved<span class="classifier">dict</span></dt><dd><p>Dictionary containing percentage data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.load_dashboard">
+<span class="sig-name descname"><span class="pre">load_dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.load_dashboard" title="Link to this definition">¶</a></dt>
+<dd><p>Load the dashboard data for the given project.</p>
+<section id="id14">
+<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing project data including the project ID.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.open_cf_dialog">
+<span class="sig-name descname"><span class="pre">open_cf_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.open_cf_dialog" title="Link to this definition">¶</a></dt>
+<dd><p>Open the CF (Conversion Factor) dialog.</p>
+<section id="id15">
+<h4>Parameters<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>cf<span class="classifier">float</span></dt><dd><p>Conversion Factor value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.open_percentage_dialog">
+<span class="sig-name descname"><span class="pre">open_percentage_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.open_percentage_dialog" title="Link to this definition">¶</a></dt>
+<dd><p>Open the percentage dialog.</p>
+<section id="id16">
+<h4>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>percentages<span class="classifier">dict</span></dt><dd><p>Dictionary containing percentage data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.report_request">
+<span class="sig-name descname"><span class="pre">report_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.report_request" title="Link to this definition">¶</a></dt>
+<dd><p>Request the generation of a report.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.set_actors_data">
+<span class="sig-name descname"><span class="pre">set_actors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actors_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_actors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UAW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.set_actors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Update the actors data in the view.</p>
+<dl class="simple">
+<dt>actors_count<span class="classifier">dict</span></dt><dd><p>Dictionary of actor counts by complexity.</p>
+</dd>
+<dt>total_actors<span class="classifier">int</span></dt><dd><p>Total number of actors.</p>
+</dd>
+<dt>UAW<span class="classifier">float</span></dt><dd><p>Unadjusted Actor Weight.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.set_environmental_factors_data">
+<span class="sig-name descname"><span class="pre">set_environmental_factors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">environmentalFactors_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.set_environmental_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Update the environmental factors data in the UI.</p>
+<section id="id17">
+<h4>Parameters<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>environmentalFactors_count<span class="classifier">dict</span></dt><dd><p>Dictionary of environmental factors counts by relevance.</p>
+</dd>
+<dt>EFactor<span class="classifier">float</span></dt><dd><p>Environmental Factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.set_technical_factors_data">
+<span class="sig-name descname"><span class="pre">set_technical_factors_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">technicalFactors_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.set_technical_factors_data" title="Link to this definition">¶</a></dt>
+<dd><p>Update the technical factors data in the UI.</p>
+<section id="id18">
+<h4>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>technicalFactors_count<span class="classifier">dict</span></dt><dd><p>Dictionary of technical factors counts by relevance.</p>
+</dd>
+<dt>TFactor<span class="classifier">float</span></dt><dd><p>Technical Factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.set_use_cases_data">
+<span class="sig-name descname"><span class="pre">set_use_cases_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">useCases_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_useCases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UUCW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.set_use_cases_data" title="Link to this definition">¶</a></dt>
+<dd><p>Update the use cases data in the UI.</p>
+<section id="id19">
+<h4>Parameters<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>useCases_count<span class="classifier">dict</span></dt><dd><p>Dictionary of use case counts by complexity.</p>
+</dd>
+<dt>total_useCases<span class="classifier">int</span></dt><dd><p>Total number of use cases.</p>
+</dd>
+<dt>UUCW<span class="classifier">float</span></dt><dd><p>Unadjusted Use Case Weight.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.update_E">
+<span class="sig-name descname"><span class="pre">update_E</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.update_E" title="Link to this definition">¶</a></dt>
+<dd><p>Update the E (Effort) value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.update_ECF">
+<span class="sig-name descname"><span class="pre">update_ECF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.update_ECF" title="Link to this definition">¶</a></dt>
+<dd><p>Update the ECF (Environmental Complexity Factor).</p>
+<section id="id20">
+<h4>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>EFactor<span class="classifier">float</span></dt><dd><p>The EFactor value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.update_TCF">
+<span class="sig-name descname"><span class="pre">update_TCF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TFactor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.update_TCF" title="Link to this definition">¶</a></dt>
+<dd><p>Update the TCF (Technical Complexity Factor).</p>
+<section id="id21">
+<h4>Parameters<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>TFactor<span class="classifier">float</span></dt><dd><p>The TFactor value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.update_UCP">
+<span class="sig-name descname"><span class="pre">update_UCP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.update_UCP" title="Link to this definition">¶</a></dt>
+<dd><p>Update the UCP (Use Case Points).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.update_UUCP">
+<span class="sig-name descname"><span class="pre">update_UUCP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">UAW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UUCW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.update_UUCP" title="Link to this definition">¶</a></dt>
+<dd><p>Update the UUCP (Unadjusted Use Case Points).</p>
+<section id="id22">
+<h4>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>UAW<span class="classifier">float</span></dt><dd><p>Unadjusted Actor Weight.</p>
+</dd>
+<dt>UUCW<span class="classifier">float</span></dt><dd><p>Unadjusted Use Case Weight.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.dashboard_controller.DashboardController.update_effort">
+<span class="sig-name descname"><span class="pre">update_effort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.dashboard_controller.DashboardController.update_effort" title="Link to this definition">¶</a></dt>
+<dd><p>Update the effort distribution and total effort.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Controller.environmentalFactors_controller">
+<span id="environmentalfactorscontroller-class"></span><h2>EnvironmentalFactorsController Class<a class="headerlink" href="#module-Controller.environmentalFactors_controller" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Controller.environmentalFactors_controller.EnvironmentalFactorsController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Controller.environmentalFactors_controller.</span></span><span class="sig-name descname"><span class="pre">EnvironmentalFactorsController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.environmentalFactors_controller.EnvironmentalFactorsController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<p>Controller for managing environmental factor operations in the application.</p>
+<p>This class acts as the intermediary between the view and the environmental factor model. It handles user interactions, business logic, and updates the view based on changes in the model.</p>
+<section id="id23">
+<h3>Attributes<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>environmentalFactors_data<span class="classifier">Signal</span></dt><dd><p>Signal to update the dashboard with environmental factors data.</p>
+</dd>
+</dl>
+</section>
+<section id="id24">
+<h3>Methods<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.environmentalFactors_controller.EnvironmentalFactorsController.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.environmentalFactors_controller.EnvironmentalFactorsController.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the EnvironmentalFactorsController.</p>
+<section id="id25">
+<h4>Parameters<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>view<span class="classifier">EnvironmentalFactorsView</span></dt><dd><p>The view that this controller will interact with.</p>
+</dd>
+<dt>model<span class="classifier">EnvironmentalFactorsModel</span></dt><dd><p>The model that this controller will interact with.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.environmentalFactors_controller.EnvironmentalFactorsController.connect_signals">
+<span class="sig-name descname"><span class="pre">connect_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.environmentalFactors_controller.EnvironmentalFactorsController.connect_signals" title="Link to this definition">¶</a></dt>
+<dd><p>Connect signals from the view to the appropriate handler methods.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.environmentalFactors_controller.EnvironmentalFactorsController.load_environmental_factors">
+<span class="sig-name descname"><span class="pre">load_environmental_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.environmentalFactors_controller.EnvironmentalFactorsController.load_environmental_factors" title="Link to this definition">¶</a></dt>
+<dd><p>Load environmental factors for the given project.</p>
+<section id="id26">
+<h4>Parameters<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing project data including the project ID.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.environmentalFactors_controller.EnvironmentalFactorsController.save_data_factor">
+<span class="sig-name descname"><span class="pre">save_data_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.environmentalFactors_controller.EnvironmentalFactorsController.save_data_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Save the data for an environmental factor.</p>
+<section id="id27">
+<h4>Parameters<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Dictionary containing the saved data for the environmental factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Controller.projects_controller">
+<span id="projectscontroller-class"></span><h2>ProjectsController Class<a class="headerlink" href="#module-Controller.projects_controller" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Controller.projects_controller.</span></span><span class="sig-name descname"><span class="pre">ProjectsController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projects_view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projects_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actors_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useCases_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">technicalFactors_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">environmentalFactors_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dashboard_model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<p>Controller for managing project operations in the application.</p>
+<p>This class acts as the intermediary between the project view and the data models. It handles user interactions, business logic, and updates the view based on changes in the model.</p>
+<section id="id28">
+<h3>Attributes<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project_opened<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project is opened.</p>
+</dd>
+<dt>project_saved<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project is saved.</p>
+</dd>
+<dt>project_closed<span class="classifier">Signal</span></dt><dd><p>Signal emitted when a project is closed.</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h3>Methods<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projects_view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projects_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actors_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useCases_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">technicalFactors_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">environmentalFactors_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dashboard_model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the ProjectsController.</p>
+<section id="id30">
+<h4>Parameters<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>projects_view<span class="classifier">ProjectsView</span></dt><dd><p>The view for projects.</p>
+</dd>
+<dt>projects_model<span class="classifier">ProjectsModel</span></dt><dd><p>The model for projects.</p>
+</dd>
+<dt>actors_model<span class="classifier">ActorsModel</span></dt><dd><p>The model for actors.</p>
+</dd>
+<dt>useCases_model<span class="classifier">UseCasesModel</span></dt><dd><p>The model for use cases.</p>
+</dd>
+<dt>technicalFactors_model<span class="classifier">TechnicalFactorsModel</span></dt><dd><p>The model for technical factors.</p>
+</dd>
+<dt>environmentalFactors_model<span class="classifier">EnvironmentalFactorsModel</span></dt><dd><p>The model for environmental factors.</p>
+</dd>
+<dt>dashboard_model<span class="classifier">DashboardModel</span></dt><dd><p>The model for the dashboard.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.add_formatted_title">
+<span class="sig-name descname"><span class="pre">add_formatted_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">worksheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg_color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.add_formatted_title" title="Link to this definition">¶</a></dt>
+<dd><p>Add a formatted title to an Excel sheet.</p>
+<section id="id31">
+<h4>Parameters<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>worksheet<span class="classifier">Worksheet</span></dt><dd><p>The worksheet to add the title to.</p>
+</dd>
+<dt>title<span class="classifier">str</span></dt><dd><p>The text of the title.</p>
+</dd>
+<dt>start_row<span class="classifier">int</span></dt><dd><p>The row where the title starts.</p>
+</dd>
+<dt>start_column<span class="classifier">int</span></dt><dd><p>The column where the title starts.</p>
+</dd>
+<dt>end_column<span class="classifier">int</span></dt><dd><p>The column where the title ends.</p>
+</dd>
+<dt>bg_color<span class="classifier">str</span></dt><dd><p>Background color of the title in hexadecimal format.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.add_project_to_database">
+<span class="sig-name descname"><span class="pre">add_project_to_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loaded_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.add_project_to_database" title="Link to this definition">¶</a></dt>
+<dd><p>Add a project to the database.</p>
+<section id="id32">
+<h4>Parameters<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>directory<span class="classifier">str</span></dt><dd><p>The directory of the project.</p>
+</dd>
+<dt>loaded_data<span class="classifier">dict</span></dt><dd><p>The loaded project data.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict or int</dt><dd><p>Project data dictionary or failure code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.auto_adjust_column_width">
+<span class="sig-name descname"><span class="pre">auto_adjust_column_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">worksheet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_ranges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.auto_adjust_column_width" title="Link to this definition">¶</a></dt>
+<dd><p>Automatically adjust the width of specified columns in an Excel worksheet based on their content.</p>
+<section id="id33">
+<h4>Parameters<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>worksheet<span class="classifier">Worksheet</span></dt><dd><p>The worksheet to adjust.</p>
+</dd>
+<dt>column_ranges<span class="classifier">list of tuple</span></dt><dd><p>List of tuples specifying the start and end columns to adjust.</p>
+</dd>
+<dt>extra_width<span class="classifier">int, optional</span></dt><dd><p>Additional width to add to the calculated column width, by default 4.</p>
+</dd>
+<dt>max_width<span class="classifier">int, optional</span></dt><dd><p>Maximum column width, by default 50.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.close_project">
+<span class="sig-name descname"><span class="pre">close_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.close_project" title="Link to this definition">¶</a></dt>
+<dd><p>Close the current project.</p>
+<section id="id34">
+<h4>Parameters<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>confirmation<span class="classifier">bool, optional</span></dt><dd><p>Whether to ask for confirmation before closing the project, by default True.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.connect_signals">
+<span class="sig-name descname"><span class="pre">connect_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.connect_signals" title="Link to this definition">¶</a></dt>
+<dd><p>Connect signals from the view to the appropriate handler methods.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.create_project">
+<span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_transaction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.create_project" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new project.</p>
+<section id="id35">
+<h4>Parameters<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Data for the new project.</p>
+</dd>
+<dt>external_transaction<span class="classifier">bool, optional</span></dt><dd><p>Indicates if the transaction is external, by default False.</p>
+</dd>
+</dl>
+</section>
+<section id="id36">
+<h4>Returns<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>tuple</dt><dd><p>Status code and project ID.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.delete_directory">
+<span class="sig-name descname"><span class="pre">delete_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.delete_directory" title="Link to this definition">¶</a></dt>
+<dd><p>Delete a directory and its contents.</p>
+<section id="id37">
+<h4>Parameters<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>directory_path<span class="classifier">str</span></dt><dd><p>The path of the directory to delete.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.delete_project">
+<span class="sig-name descname"><span class="pre">delete_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.delete_project" title="Link to this definition">¶</a></dt>
+<dd><p>Delete a project.</p>
+<section id="id38">
+<h4>Parameters<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to be deleted.</p>
+</dd>
+<dt>table_row<span class="classifier">int</span></dt><dd><p>The row number in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.download_project">
+<span class="sig-name descname"><span class="pre">download_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transaction_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.download_project" title="Link to this definition">¶</a></dt>
+<dd><p>Download a project to a specified directory.</p>
+<section id="id39">
+<h4>Parameters<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to download.</p>
+</dd>
+<dt>project_name<span class="classifier">str</span></dt><dd><p>The name of the project.</p>
+</dd>
+<dt>directory<span class="classifier">str, optional</span></dt><dd><p>The directory to save the project, by default None.</p>
+</dd>
+<dt>transaction_active<span class="classifier">bool, optional</span></dt><dd><p>Indicates if the transaction is active, by default True.</p>
+</dd>
+</dl>
+</section>
+<section id="id40">
+<h4>Returns<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>str or int</dt><dd><p>The directory where the project is downloaded or a status code indicating failure.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.edit_project">
+<span class="sig-name descname"><span class="pre">edit_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_send</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.edit_project" title="Link to this definition">¶</a></dt>
+<dd><p>Edit an existing project.</p>
+<section id="id41">
+<h4>Parameters<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_send<span class="classifier">dict</span></dt><dd><p>Original data of the project to be edited.</p>
+</dd>
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>New data for the project.</p>
+</dd>
+<dt>row<span class="classifier">int</span></dt><dd><p>The row number in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.export_project_data">
+<span class="sig-name descname"><span class="pre">export_project_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.export_project_data" title="Link to this definition">¶</a></dt>
+<dd><p>Export project data to the specified directory.</p>
+<section id="id42">
+<h4>Parameters<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project to export.</p>
+</dd>
+<dt>project_name<span class="classifier">str</span></dt><dd><p>The name of the project.</p>
+</dd>
+<dt>project_directory<span class="classifier">str</span></dt><dd><p>The directory to save the project data.</p>
+</dd>
+</dl>
+</section>
+<section id="id43">
+<h4>Returns<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>int</dt><dd><p>Status code indicating success or failure.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.export_projects">
+<span class="sig-name descname"><span class="pre">export_projects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.export_projects" title="Link to this definition">¶</a></dt>
+<dd><p>Export all projects to a ZIP file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.filter_projects_table">
+<span class="sig-name descname"><span class="pre">filter_projects_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.filter_projects_table" title="Link to this definition">¶</a></dt>
+<dd><p>Filter the projects table based on search text.</p>
+<section id="id44">
+<h4>Parameters<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>search_text<span class="classifier">str</span></dt><dd><p>The text to search for in the projects table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.generate_excel_report">
+<span class="sig-name descname"><span class="pre">generate_excel_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.generate_excel_report" title="Link to this definition">¶</a></dt>
+<dd><p>Generate an Excel report for a project.</p>
+<section id="id45">
+<h4>Parameters<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.import_project">
+<span class="sig-name descname"><span class="pre">import_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.import_project" title="Link to this definition">¶</a></dt>
+<dd><p>Import a project from a directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.insert_project_data">
+<span class="sig-name descname"><span class="pre">insert_project_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loaded_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.insert_project_data" title="Link to this definition">¶</a></dt>
+<dd><p>Insert project data into the database.</p>
+<section id="id46">
+<h4>Parameters<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>loaded_data<span class="classifier">dict</span></dt><dd><p>The loaded project data.</p>
+</dd>
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+</dl>
+</section>
+<section id="id47">
+<h4>Returns<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if successful, False otherwise.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.load_projects">
+<span class="sig-name descname"><span class="pre">load_projects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.load_projects" title="Link to this definition">¶</a></dt>
+<dd><p>Load all projects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.open_management_project_dialog">
+<span class="sig-name descname"><span class="pre">open_management_project_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_send</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.open_management_project_dialog" title="Link to this definition">¶</a></dt>
+<dd><p>Open the project management dialog.</p>
+<section id="id48">
+<h4>Parameters<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>action<span class="classifier">str</span></dt><dd><p>The action to perform (“new” or “edit”).</p>
+</dd>
+<dt>data_send<span class="classifier">dict</span></dt><dd><p>Data to be sent to the dialog.</p>
+</dd>
+<dt>project_row<span class="classifier">int</span></dt><dd><p>The row number in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.open_project">
+<span class="sig-name descname"><span class="pre">open_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.open_project" title="Link to this definition">¶</a></dt>
+<dd><p>Open a project.</p>
+<section id="id49">
+<h4>Parameters<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing project data.</p>
+</dd>
+<dt>row<span class="classifier">int</span></dt><dd><p>The row number in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.projects_controller.ProjectsController.set_favorite_project">
+<span class="sig-name descname"><span class="pre">set_favorite_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_favorite</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.projects_controller.ProjectsController.set_favorite_project" title="Link to this definition">¶</a></dt>
+<dd><p>Set or unset a project as favorite.</p>
+<section id="id50">
+<h4>Parameters<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_id<span class="classifier">int</span></dt><dd><p>The ID of the project.</p>
+</dd>
+<dt>table_row<span class="classifier">int</span></dt><dd><p>The row number in the table.</p>
+</dd>
+<dt>is_favorite<span class="classifier">bool</span></dt><dd><p>Current favorite status of the project.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Controller.technicalFactors_controller">
+<span id="technicalfactorscontroller-class"></span><h2>TechnicalFactorsController Class<a class="headerlink" href="#module-Controller.technicalFactors_controller" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Controller.technicalFactors_controller.TechnicalFactorsController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Controller.technicalFactors_controller.</span></span><span class="sig-name descname"><span class="pre">TechnicalFactorsController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.technicalFactors_controller.TechnicalFactorsController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<p>Controller for managing technical factor operations in the application.</p>
+<p>This class acts as the intermediary between the view and the technical factor model. It handles user interactions, business logic, and updates the view based on changes in the model.</p>
+<section id="id51">
+<h3>Attributes<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>technicalFactors_data<span class="classifier">Signal</span></dt><dd><p>Signal to update the dashboard with technical factors data.</p>
+</dd>
+</dl>
+</section>
+<section id="id52">
+<h3>Methods<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.technicalFactors_controller.TechnicalFactorsController.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.technicalFactors_controller.TechnicalFactorsController.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the TechnicalFactorsController.</p>
+<section id="id53">
+<h4>Parameters<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>view<span class="classifier">TechnicalFactorsView</span></dt><dd><p>The view that this controller will interact with.</p>
+</dd>
+<dt>model<span class="classifier">TechnicalFactorsModel</span></dt><dd><p>The model that this controller will interact with.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.technicalFactors_controller.TechnicalFactorsController.connect_signals">
+<span class="sig-name descname"><span class="pre">connect_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.technicalFactors_controller.TechnicalFactorsController.connect_signals" title="Link to this definition">¶</a></dt>
+<dd><p>Connect signals from the view to the appropriate handler methods.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.technicalFactors_controller.TechnicalFactorsController.load_technical_factors">
+<span class="sig-name descname"><span class="pre">load_technical_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.technicalFactors_controller.TechnicalFactorsController.load_technical_factors" title="Link to this definition">¶</a></dt>
+<dd><p>Load technical factors for the given project.</p>
+<section id="id54">
+<h4>Parameters<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing project data including the project ID.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.technicalFactors_controller.TechnicalFactorsController.save_data_factor">
+<span class="sig-name descname"><span class="pre">save_data_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.technicalFactors_controller.TechnicalFactorsController.save_data_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Save the data for a technical factor.</p>
+<section id="id55">
+<h4>Parameters<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Dictionary containing the saved data for the technical factor.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-Controller.useCases_controller">
+<span id="usecasescontroller-class"></span><h2>UseCasesController Class<a class="headerlink" href="#module-Controller.useCases_controller" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Controller.useCases_controller.</span></span><span class="sig-name descname"><span class="pre">UseCasesController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<p>Controller for managing use case operations in the application.</p>
+<p>This class acts as the intermediary between the view and the use case model. It handles user interactions, business logic, and updates the view based on changes in the model.</p>
+<section id="id56">
+<h3>Attributes<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>useCases_data<span class="classifier">Signal</span></dt><dd><p>Signal to update the dashboard with use cases data.</p>
+</dd>
+</dl>
+</section>
+<section id="id57">
+<h3>Methods<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the UseCasesController.</p>
+<section id="id58">
+<h4>Parameters<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>view<span class="classifier">UseCasesView</span></dt><dd><p>The view that this controller will interact with.</p>
+</dd>
+<dt>model<span class="classifier">UseCasesModel</span></dt><dd><p>The model that this controller will interact with.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.connect_signals">
+<span class="sig-name descname"><span class="pre">connect_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.connect_signals" title="Link to this definition">¶</a></dt>
+<dd><p>Connect signals from the view to the appropriate handler methods.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.create_use_case">
+<span class="sig-name descname"><span class="pre">create_use_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.create_use_case" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new use case in the database.</p>
+<section id="id59">
+<h4>Parameters<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>Data for the new use case.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.delete_use_cases">
+<span class="sig-name descname"><span class="pre">delete_use_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">useCases_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.delete_use_cases" title="Link to this definition">¶</a></dt>
+<dd><p>Delete selected use cases from the database.</p>
+<section id="id60">
+<h4>Parameters<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>useCases_info<span class="classifier">list of dict</span></dt><dd><p>Information of the use cases to be deleted.</p>
+</dd>
+<dt>selected_rows<span class="classifier">list of int</span></dt><dd><p>Rows selected in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.filter_use_cases_table">
+<span class="sig-name descname"><span class="pre">filter_use_cases_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.filter_use_cases_table" title="Link to this definition">¶</a></dt>
+<dd><p>Filter the use cases table based on search text.</p>
+<section id="id61">
+<h4>Parameters<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>search_text<span class="classifier">str</span></dt><dd><p>The text to search for in the use cases table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.load_use_cases">
+<span class="sig-name descname"><span class="pre">load_use_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.load_use_cases" title="Link to this definition">¶</a></dt>
+<dd><p>Load use cases for the given project.</p>
+<section id="id62">
+<h4>Parameters<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project_data<span class="classifier">dict</span></dt><dd><p>Dictionary containing project data including the project ID.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.open_management_dialog">
+<span class="sig-name descname"><span class="pre">open_management_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_send</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.open_management_dialog" title="Link to this definition">¶</a></dt>
+<dd><p>Open the management dialog for creating or editing a use case.</p>
+<section id="id63">
+<h4>Parameters<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>action<span class="classifier">str</span></dt><dd><p>The action to perform (“new” or “edit”).</p>
+</dd>
+<dt>option<span class="classifier">str</span></dt><dd><p>Additional options for the action.</p>
+</dd>
+<dt>data_send<span class="classifier">dict</span></dt><dd><p>Data to be sent to the dialog.</p>
+</dd>
+<dt>selected_row<span class="classifier">int</span></dt><dd><p>The selected row in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.open_weights_dialog">
+<span class="sig-name descname"><span class="pre">open_weights_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.open_weights_dialog" title="Link to this definition">¶</a></dt>
+<dd><p>Open the dialog to update use case weights.</p>
+<section id="id64">
+<h4>Parameters<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>weights<span class="classifier">dict</span></dt><dd><p>Dictionary containing the current weights of the use cases.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.update_use_case">
+<span class="sig-name descname"><span class="pre">update_use_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_send</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_saved</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.update_use_case" title="Link to this definition">¶</a></dt>
+<dd><p>Update an existing use case in the database.</p>
+<section id="id65">
+<h4>Parameters<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_send<span class="classifier">dict</span></dt><dd><p>Original data of the use case to be updated.</p>
+</dd>
+<dt>data_saved<span class="classifier">dict</span></dt><dd><p>New data for the use case.</p>
+</dd>
+<dt>selected_row<span class="classifier">int</span></dt><dd><p>The selected row in the table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Controller.useCases_controller.UseCasesController.update_use_cases_weights">
+<span class="sig-name descname"><span class="pre">update_use_cases_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights_saved</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Controller.useCases_controller.UseCasesController.update_use_cases_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Update the weights of the use cases.</p>
+<section id="id66">
+<h4>Parameters<a class="headerlink" href="#id66" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>weights_saved<span class="classifier">dict</span></dt><dd><p>Dictionary containing the new weights of the use cases.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">QuickEst</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Controller Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-Controller.actors_controller">ActorsController Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Controller.dashboard_controller">DashboardController Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Controller.environmentalFactors_controller">EnvironmentalFactorsController Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Controller.projects_controller">ProjectsController Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Controller.technicalFactors_controller">TechnicalFactorsController Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Controller.useCases_controller">UseCasesController Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_source.html">DataSource Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dialog.html">Dialog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">UI Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="view.html">View Module</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to QuickEst’s documentation!</a></li>
+      <li>Next: <a href="data_source.html" title="next chapter">DataSource Module</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Iván Vega Moreno.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/controller.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
